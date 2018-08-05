@@ -1,20 +1,26 @@
 <template>
-
     <div class="container-fluid body">
-
-        <div class="wave d-flex">
-            <div class="container d-flex row justify-content-center col-sm-6">
-                <div class="align-content-center d-flex flex-wrap">
-                <button type="button" class="btn-change text-white btn btn-round-lg btn-lg align-self-center shadow" style="background: rgb(91,50,180)">why us ?</button>
-                <span class="mx-1"></span>
-                <button @click="changeRoute('newWallet')" type="button" class="btn-change text-white btn btn-round-lg btn-lg align-self-center shadow" style="background: rgb(86,158,148)">&nbsp&nbsp&nbsp&nbsp create wallet &nbsp&nbsp&nbsp&nbsp</button>
+        <div class="wave d-flex flex-wrap">
+            <div class="d-flex row justify-content-center col-sm-6" style="margin:0px; padding: 0px">
+                <div class="container-fluid justify-content-center row d-flex" style="z-index: 2">
+                    <!-- <h3 class="h3 mt-5 text-white text-center align-self-center"> join the future of trading </h3> -->
+                    <div class="container-fluid text-center align-content-center pt-5" style="width: 100%; margin: auto">
+                        <input id="pass" type="password" placeholder="Enter password" class="shadow rounded border align-self-center mb-2"> </input>
+                        <span class="mx-1"></span>
+                        <button id="create" type="button" class="btn btn-round btn-default shadow btn-change">Create new Wallet</button>
+                    </div>
+                </div>
+                <div class="align-content-center container-fluid text-center" style="z-index:2">
+                    <button type="button" class="btn-change text-white btn btn-round-lg btn-lg shadow" style="background: rgb(91,50,180)">why us ?</button>
+                    <span class="mx-1"></span>
+                    <button @click="changeRoute('newWallet')" type="button" class="btn-change text-white btn btn-round-lg btn-lg align-self-center shadow" style="background: rgb(86,158,148)">&nbsp&nbsp&nbsp&nbsp create wallet &nbsp&nbsp&nbsp&nbsp</button>
                 </div>
             </div>
-            <div class="container d-flex justify-content-center col-sm-6">
-                <img src='https://avatars.mds.yandex.net/get-pdb/805781/aac6cd9e-f9c3-4877-9a6c-35aa66d41d6d/orig' class="align-self-center img-fluid" id="banner">
+            <div class="container d-flex justify-content-center col-sm-6 banner">
+                <img src='http://www.webabridgesolutions.com/images/apple.png' class="align-self-center img-fluid">
             <!-- <h1> Keep Your Coins Safe </h1> -->
             </div>
-            <svg id='sine' viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 50%; width: 100%;"><path d="M-0.35,129.77 C149.99,150.00 399.04,103.13 526.60,145.55 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg>
+            <svg id='sine' viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-0.35,129.77 C149.99,150.00 399.04,103.13 526.60,145.55 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg>
         </div>
 
 
@@ -33,6 +39,49 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec elit ex. Et
 
 
 <style scoped>
+
+    #pass {
+        height: 40px;
+        width: 300px;
+        padding-left: 10px;
+    }
+
+@media (min-width: 992px) {
+    
+    .banner {
+        position: relative;
+        overflow: visible;
+        z-index: 2;
+        top: 8%;
+    }
+}
+
+@media (min-width: 576px) {
+    #pass {
+        height: 40px;
+        width: 300px;
+        padding-left: 10px;
+    }
+    .banner {
+        position: relative;
+        overflow: visible;
+        z-index: 20;
+        top: 12%;
+    }
+}
+
+@media (min-width: 0) {
+    
+    .banner {
+        position: relative;
+        overflow: visible;
+        z-index: 20;
+        top: 0%;
+    }
+
+
+}
+
 
 .btn-change{
     -webkit-transition: all 0.5s ease-in-out;
@@ -77,6 +126,7 @@ padding-right: 10px;
     position: absolute;
     bottom: 0;
 }
+
 
 </style>
 
