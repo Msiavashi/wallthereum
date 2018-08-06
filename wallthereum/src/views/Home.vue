@@ -11,9 +11,9 @@
                     </div>
                 </div>
                 <div class="align-content-center container-fluid text-center" style="z-index:2">
-                    <button type="button" class="btn-change text-white btn btn-round-lg btn-lg shadow" style="background: rgb(91,50,180)">why us ?</button>
+                    <button type="button" class="btn-change text-white btn btn-round-lg btn-lg shadow" style="background: rgb(91,50,180)">getting started</button>
                     <span class="mx-1"></span>
-                    <button @click="changeRoute('newWallet')" type="button" class="btn-change text-white btn btn-round-lg btn-lg align-self-center shadow" style="background: rgb(86,158,148)">&nbsp&nbsp&nbsp&nbsp create wallet &nbsp&nbsp&nbsp&nbsp</button>
+                    <button @click="changeRoute('newWallet')" type="button" class="btn-change text-white btn btn-round-lg btn-lg align-self-center shadow" style="background: rgb(86,158,148)">&nbsp&nbsp&nbsp&nbsp already have a wallet? &nbsp&nbsp&nbsp&nbsp</button>
                 </div>
             </div>
             <div class="container d-flex justify-content-center col-sm-6 banner">
@@ -22,15 +22,77 @@
             </div>
             <svg id='sine' viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-0.35,129.77 C149.99,150.00 399.04,103.13 526.60,145.55 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg>
         </div>
+        <!-- header end -->
 
+        <span class="m-2"></span>
 
-
+        <!-- content start -->
         <div class="container">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec elit ex. Etiam elementum lectus et tempor molestie. Pellentesque vestibulum dui sit amet dui volutpat sollicitudin. Etiam non erat finibus, iaculis nunc vel, convallis eros. Etiam efficitur tempor dui, vitae fringilla ipsum tristique quis. Aliquam erat volutpat. Cras ullamcorper ex et viverra vulputate. Nam lectus ligula, pretium nec risus nec, ultricies fringilla mauris. Proin quis venenatis neque, iaculis porta nulla.
+            <div>
+                <h2 class="h2 text-center"> Join the future of Trading </h2>
+                <h5 class="p text-center font-italic font-weight-light text-body text-black-50">
+                    Ethereum is an open-source, public, blockchain-based distributed computing platform and operating system featuring smart contract functionality. It supports a modified version of Nakamoto consensus via transaction-based state transitions.
+                </h5>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec elit ex. Etiam elementum lectus et tempor molestie. Pellentesque vestibulum dui sit amet dui volutpat sollicitudin. Etiam non erat finibus, iaculis nunc vel, convallis eros. Etiam efficitur tempor dui, vitae fringilla ipsum tristique quis. Aliquam erat volutpat. Cras ullamcorper ex et viverra vulputate. Nam lectus ligula, pretium nec risus nec, ultricies fringilla mauris. Proin quis venenatis neque, iaculis porta nulla.
+                <!-- feature boxes -->
+                <div class="d-flex row flex-wrap my-5 justify-content-center">
+                    <div class="col-lg-4 col-md-4 col-xs-4 d-flex row justify-content-center">
+                        <div class="d-flex row justify-content-center px-3">
+                            <div class="hexagon security-hexagon d-flex row justify-content-center">
+                                <div class="hexTop"></div>
+                                <div class="hexBottom"></div>
+                            </div>
+                            <div class="container text-center">
+                                <h5 class="headline h5 py-3"> Client Side </h5>
+                            </div>
+                            <div class="container text-center text-wrap">
+                                <p class="h6 text-black-50"> everything happens in your browser. we store or send nothing to our servers.</p>
+                            </div>
+                        </div>
+                    </div>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec elit ex. Etiam elementum lectus et tempor molestie. Pellentesque vestibulum dui sit amet dui volutpat sollicitudin. Etiam non erat finibus, iaculis nunc vel, convallis eros. Etiam efficitur tempor dui, vitae fringilla ipsum tristique quis. Aliquam erat volutpat. Cras ullamcorper ex et viverra vulputate. Nam lectus ligula, pretium nec risus nec, ultricies fringilla mauris. Proin quis venenatis neque, iaculis porta nulla.
+                    <div class="col-lg-4 col-md-4 col-xs-4 d-flex row justify-content-center">
+                        
+                        <div class="d-flex row justify-content-center px-3">
+                            <div class="hexagon dashboard-hexagon">
+                                <div class="hexTop"></div>
+                                <div class="hexBottom"></div>
+                            </div>
+                            <div class="container text-center">
+                                <h5 class="headline h5 py-3"> Dashboard </h5>
+                            </div>
+                            <div class="container text-center text-wrap">
+                                <p class="h6 text-black-50"> A beafutiful Dashboard to monitor and control your deposit and transactions  </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-xs-4 d-flex row justify-content-center">
+                        <div class="d-flex row justify-content-center px-3">
+                            <div class="hexagon mobile-hexagon">
+                                <div class="hexTop"></div>
+                                <div class="hexBottom"></div>
+                            </div>
+
+                            <div class="container text-center">
+                                <h5 class="headline h5 py-3"> Mobile Application </h5>
+                            </div>
+                            <div class="container text-center text-wrap">
+                                <p class="h6 text-black-50"> You can think of Wallthereum Android as a completely secure, hermetic environment, which uses hybrid encryption on top of Android’s own keystore to provide maximum security on the inside. </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- feature boxes -->
+
+            </div>
+
+            <div>
+
+            </div>
         </div>
 
     </div>
@@ -40,11 +102,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec elit ex. Et
 
 <style scoped>
 
-    #pass {
-        height: 40px;
-        width: 300px;
-        padding-left: 10px;
-    }
+#pass {
+    height: 40px;
+    width: 300px;
+    padding-left: 10px;
+}
 
 @media (min-width: 992px) {
     
@@ -127,7 +189,87 @@ padding-right: 10px;
     bottom: 0;
 }
 
+.mobile-hexagon {
+  background-image: url(https://www.btcethereum.com/blog/wp-content/uploads/2018/03/29439/abra-mobile-app-adds-20-new-cryptocurrencies-and-stablecoin-technology-1024x1024.jpg);
+}
 
+.security-hexagon {
+
+  background-image: url(https://atozcrypto.org/wp-content/uploads/2018/03/ethcentral.png);
+}
+
+.dashboard-hexagon {
+
+  background-image: url(https://d85wutc1n854v.cloudfront.net/live/products/600x375/WB0R67929.png?v=1.7.5);
+}
+
+.hexagon {
+  position: relative;
+  width: 200px; 
+  height: 115.47px;
+  margin: 57.74px 0;
+  background-size: auto 230.9401px;
+  background-position: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+.hexTop,
+.hexBottom {
+  position: absolute;
+  z-index: 1;
+  width: 141.42px;
+  height: 141.42px;
+  overflow: hidden;
+  -webkit-transform: scaleY(0.5774) rotate(-45deg);
+  -ms-transform: scaleY(0.5774) rotate(-45deg);
+  transform: scaleY(0.5774) rotate(-45deg);
+  background: inherit;
+  left: 29.29px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+/*counter transform the bg image on the caps*/
+.hexTop:after,
+.hexBottom:after {
+  content: "";
+  position: absolute;
+  width: 200.0000px;
+  height: 115.47005383792516px;
+  -webkit-transform:  rotate(45deg) scaleY(1.7321) translateY(-57.7350px);
+  -ms-transform:      rotate(45deg) scaleY(1.7321) translateY(-57.7350px);
+  transform:          rotate(45deg) scaleY(1.7321) translateY(-57.7350px);
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  background: inherit;
+}
+
+.hexTop {
+  top: -70.7107px;
+}
+
+.hexTop:after {
+  background-position: center top;
+}
+
+.hexBottom {
+  bottom: -70.7107px;
+}
+
+.hexBottom:after {
+  background-position: center bottom;
+}
+
+.hexagon:after {
+  content: "";
+  position: absolute;
+  top: 0.0000px;
+  left: 0;
+  width: 200.0000px;
+  height: 115.4701px;
+  z-index: 2;
+  background: inherit;
+}
 </style>
 
 <script>

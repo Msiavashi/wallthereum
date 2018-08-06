@@ -2,7 +2,7 @@
     <header class="header-area overlay">
     <nav class="navbar navbar-expand-md navbar-dark">
 		<div class="container">
-			<a href="#" class="navbar-brand">Bootdey.com</a>
+			<a href="#" class="navbar-brand">wallthereum</a>
 			
 			<button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#main-nav">
 				<span class="menu-icon-bar"></span>
