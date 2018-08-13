@@ -5,9 +5,9 @@
                 <div class="container-fluid justify-content-center row d-flex" style="z-index: 2">
                     <!-- <h3 class="h3 mt-5 text-white text-center align-self-center"> join the future of trading </h3> -->
                     <div class="container-fluid text-center align-content-center pt-5" style="width: 100%; margin: auto">
-                        <input id="pass" type="password" placeholder="Enter password" class="shadow rounded border align-self-center mb-2"> </input>
+                        <input @keyup.enter="createWallet" v-model="$store.password" id="pass" type="password" placeholder="Enter password" class="shadow rounded border align-self-center mb-2"> </input>
                         <span class="mx-1"></span>
-                        <button id="create" type="button" class="btn btn-round btn-default shadow btn-change">Create new Wallet</button>
+                        <button data-toggle="modal" data-target="#tutorial" id="create" type="button" class="btn btn-round btn-default shadow btn-change">Create new Wallet</button>
                     </div>
                 </div>
                 <div class="align-content-center container-fluid text-center" style="z-index:2">
@@ -94,6 +94,9 @@
 
             </div>
         </div>
+
+
+        <tutorial-modal></tutorial-modal>
 
     </div>
 
@@ -273,13 +276,18 @@ padding-right: 10px;
 </style>
 
 <script>
+import TutorialModal from '@/components/TutorialModal'
 export default {
     components: {
+        TutorialModal
     },
 
     methods: {
         changeRoute: function(routeName) {
             return this.$router.push({name: routeName});
+        },
+        createWallet: function(){
+            console.log("salam");
         }
     }
 }
