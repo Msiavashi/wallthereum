@@ -18,7 +18,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" @click="changeRoute('newWallet')">Accept</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" @click="onAcceptClicked">Accept</button>
       </div>
     </div>
   </div>
@@ -27,14 +27,25 @@
 
 
 <script>
+import axios from 'axios'
+import Web3 from 'web3';
+
 export default {
     data: ()=> ({
         showTutorial: true
     }),
 
     methods: {
-        changeRoute: function(routeName){
-            this.$router.push({name: routeName});
+        onAcceptClicked: function(){
+          if (this.$store.password){
+            this.createWallet();
+            this.$router.push({name: "newWallet"});
+          }
+        },
+
+        createWallet: function(){
+          this.$store.wallet = this.$store.web3.eth.accounts.create();
+          console.log(this.$store.wallet);
         }
     }
 }

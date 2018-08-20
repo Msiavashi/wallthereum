@@ -5,7 +5,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-      password: null
+      password: null,
+      wallet: null,
+      web3: null
   },
   mutations: {
 
