@@ -43,7 +43,7 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text text-danger">Private Key</span>
                               </div>
-                              <textarea readonly class="form-control text-center" aria-label="private kye" v-text="privateKey"></textarea>
+                              <textarea readonly class="form-control text-center" aria-label="private kye" v-text="$store.wallet.privateKey"></textarea>
                             </div>
                           <div class="container">
                               <h6 class="h5 mt-5 text-danger"> **Do not lose it!** It cannot be recovered if you lose it. </h6>
@@ -138,7 +138,7 @@ export default {
       element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
       element.setAttribute('download', filename);
 
-      element.style.display = 'none';
+     element.style.display = 'none';
       document.body.appendChild(element);
 
       element.click();
