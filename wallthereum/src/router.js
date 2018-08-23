@@ -3,7 +3,9 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import NewWallet from '@/views/NewWallet.vue'
 import store from '@/store'
-// import Web3 from 'web3'
+import Dashboard from '@/views/Dashboard.vue'
+import MethodSelection from '@/views/MethodSelection.vue'
+
 var Web3 = require('web3');
 
 Vue.use(Router)
@@ -19,6 +21,16 @@ const router = new Router({
       path: '/wallet/create',
       name: 'newWallet',
       component: NewWallet
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: Dashboard
+    },
+    {
+      path: '/wallet',
+      name: 'wllet',
+      component: MethodSelection
     }
   ]
 })
