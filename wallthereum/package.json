@@ -13,6 +13,7 @@
     "ethereumjs-wallet": "^0.6.2",
     "jquery": "^3.3.1",
     "register-service-worker": "^1.0.0",
+    "secp256k1": "^3.5.2",
     "vue": "^2.5.16",
     "vue-material": "^1.0.0-beta-10.2",
     "vue-router": "^3.0.1",

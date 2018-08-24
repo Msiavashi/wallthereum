@@ -71,6 +71,7 @@
 
 <script>
 import RoundedButtonLg from '@/components/RoundedButtonLg';
+var secp256k1 = require('secp256k1');
 
 export default {
     data: () => ({
@@ -81,8 +82,22 @@ export default {
     },
     methods: {
         unlock: function(){
-            console.log("salam")
-            this.$router.push({name: 'dashboard'});
+                this.$router.push({name: 'dashboard'});
+            // if(this.isValidPrivateKey()){
+            //     this.$store.wallet = this.$store.web3.eth.accounts.privateKeyToAccount(this.privateKey);
+            //     this.$router.push({name: 'dashboard'});
+            // }else{
+            //     alert('invalid private key !');
+            // }
+
+        },
+
+        isValidPrivateKey: function(){
+            try {
+                return secp256k1.privateKeyVerify(new Buffer(this.privateKey, 'hex'));
+            } catch (error) {
+                return false;
+            }
         }
     }
 }

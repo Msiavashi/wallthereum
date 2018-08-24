@@ -29,7 +29,7 @@ const router = new Router({
     },
     {
       path: '/wallet',
-      name: 'wllet',
+      name: 'wallet',
       component: MethodSelection
     }
   ]
@@ -40,9 +40,13 @@ router.beforeEach((to, from, next) => {
   // initializing web3
   store.web3 = new Web3('https://mainnet.infura.io/');
 
-  if(to.name == "newWallet" &&  store.password == null){
-      alert("Password Required !");
-      router.push({name: 'home'});
+  if(to.name == "dashboard" && store.wallet == null){
+    // router.push({name: 'wallet'});
+    next();
+  }
+  else if(to.name == "newWallet" &&  store.password == null){
+    alert("Password Required !");
+    router.push({name: 'home'});
   }else{
     next();
   }
