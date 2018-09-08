@@ -1,15 +1,16 @@
 <template>
     <div class="container-fluid body">
         <div class="wave d-flex flex-wrap">
-            <div class="d-flex row justify-content-center col-sm-6" style="margin:0px; padding: 0px">
-                <div class="container-fluid justify-content-center row d-flex" style="z-index: 2">
+            <div class="d-flex row  col-sm-6" style="margin:0px; padding: 0px">
+                <div class="row align-self-center" style="z-index: 2; margin: auto">
                     <!-- <h3 class="h3 mt-5 text-white text-center align-self-center"> join the future of trading </h3> -->
-                    <div class="container-fluid text-center align-content-center pt-5" style="width: 100%; margin: auto">
-                        <input @keyup.enter="createWallet" v-model="$store.password" id="pass" type="password" placeholder="Enter password" class="shadow rounded border align-self-center mb-2"> </input>
-                        <span class="mx-1"></span>
-                        <button data-toggle="modal" data-target="#tutorial" id="create" type="button" class="btn btn-round btn-default shadow btn-change">Create new Wallet</button>
+                    <div class="input-group mb-3" id="password-group">
+                        <input type="password" @keyup.enter="createWallet" v-model="$store.password" id="pass" class="form-control shadow" placeholder="Enter a password" aria-label="password" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button data-toggle="modal" data-target="#tutorial" id="create" class="btn btn-outline-secondary bg-secondary shadow text-white  border" type="button">Create Wallet</button>
+                        </div>
+                        </div>
                     </div>
-                </div>
                 <div class="align-content-center container-fluid text-center" style="z-index:2">
                     <button type="button" class="btn-change text-white btn btn-round-lg btn-lg shadow" style="background: rgb(91,50,180)">getting started</button>
                     <span class="mx-1"></span>
@@ -111,6 +112,12 @@
     padding-left: 10px;
 }
 
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 1200px) {
+}
 @media (min-width: 992px) {
     
     .banner {
@@ -122,6 +129,7 @@
 }
 
 @media (min-width: 576px) {
+    
     #pass {
         height: 40px;
         width: 300px;
@@ -144,7 +152,9 @@
         top: 0%;
     }
 
-
+    #password-group{
+        margin-top: 18%;
+    }
 }
 
 

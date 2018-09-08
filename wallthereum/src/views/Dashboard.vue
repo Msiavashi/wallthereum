@@ -2,7 +2,6 @@
 <div class="" id="background-container" style="background: linear-gradient(60deg,#ab47bc,#7b1fa2)">
     <div class="" style="width: 100%">
         <div>
-
             <!-- Tabs on Plain Card -->
             <div class="card card-nav-tabs card-plain">
                 <div class="card-header card-header-danger">
@@ -17,7 +16,7 @@
                                     <a class="nav-link" href="#updates" data-toggle="tab">Updates</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#history" data-toggle="tab">History</a>
+                                    <a class="nav-link" href="#history" data-toggle="tab">Transactions History</a>
                                 </li>
                             </ul>
                         </div>
@@ -27,7 +26,28 @@
                         <div class="tab-pane active" id="home">
                             <div class="d-flex row flex-wrap justify-content-center">
                                 <div class="col-md-8 col-sm-12 mr-sm-3 rounded shadow-lg order-3 order-md-1 bg-white">
-                                    salam
+                                    <div class="container py-3 input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroup-sizing-default">Receiver Address</span>
+                                        </div>
+                                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="0x051438f6b33e0a5acf8686754c3d582ceb01dc5be10a0e8f605d23a17ed99930">
+                                    </div>
+
+                                    <div class="container input-group mb-3" id="amount-field">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">Amount</span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Enter the amount you want to transfer" aria-label="amount" aria-describedby="basic-addon1">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">ETH</span>
+                                        </div>
+                                    </div>
+                                    <div class="container input-group mb-3" id="amount-field">
+                                        <div class="input-group-prepend">
+                                            <button type="button" data-placement="right" data-container="body" class="btn btn-warning input-group-text" data-toggle="popover" title="Gas limit" data-content="You can see your TX fee (gas limit * gas price) in ETH & USD when you search for your transaction on etherscan.io. This is not a TX fee that MyEtherWallet, or any other service provider, receives. This fee is paid to miners for mining transactions, putting them into blocks, and securing the blockchain." id="basic-addon1"><i class="material-icons"> info </i></button>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Gas limit" aria-label="gas-limit" aria-describedby="basic-addon1">
+                                    </div>
                                 </div>
                                 <div class="col-md-3 col-sm-12 rounded shadow-lg order-1 order-md-3 bg-white">
                                     goodbye
@@ -87,6 +107,11 @@ export default {
     #background-container{
         padding-top: 6%;
         height: 100vh;
+    }
+
+    #amount-field {
+        float: left;
+        width: 70%;
     }
 }
 
