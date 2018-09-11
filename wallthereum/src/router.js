@@ -38,11 +38,11 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
 
   // initializing web3
-  store.web3 = new Web3('https://mainnet.infura.io/');
+  store.web3 = new Web3('wss://mainnet.infura.io/ws');
 
   if(to.name == "dashboard" && store.wallet == null){
-    // router.push({name: 'wallet'});
-    next();
+    router.push({name: 'wallet'});
+    // next();
   }
   else if(to.name == "newWallet" &&  store.password == null){
     alert("Password Required !");

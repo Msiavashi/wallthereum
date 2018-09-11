@@ -22,11 +22,60 @@
                         </div>
                     </div>
                 </div><div class="card-body ">
+
                     <div class="tab-content text-center">
                         <div class="tab-pane active" id="home">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Wallet Address</h5>
+                                        <p class="card-text">{{$store.wallet.address}}</p>
+                                        <a href="#" class="btn btn-primary">Read More</a>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Account Balance</h5>
+                                        <p class="card-text">{{balance}} ETH</p>
+                                        <a href="#" class="btn btn-primary">Read More</a>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Gas Price</h5>
+                                        <p class="card-text">{{gasPrice}}</p>
+                                        <a href="#" class="btn btn-primary">Read More</a>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Network</h5>
+                                        <div class="dropdown show">
+                                        <p class="card-text">Status: {{networkStatus}}</p>
+                                        <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{currentNetwork.name}}
+                                        </a>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <a v-for="(network, index) in networks" class="dropdown-item" :key="index" @click="changeNetwork(index)">{{network.name}}</a>
+                                        </div>
+                                        </div>
+                                        <!-- <a href="#" class="btn btn-primary">Read More</a> -->
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="d-flex row flex-wrap justify-content-center">
-                                <div class="col-md-8 col-sm-12 mr-sm-3 rounded shadow-lg order-3 order-md-1 bg-white">
-                                    <div class="container py-3 input-group mb-3">
+                                <div class="col-md-11 col-sm-12 rounded shadow-lg order-3 order-md-1 bg-white">
+                                    <div class="float-left container py-3 input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroup-sizing-default">Receiver Address</span>
                                         </div>
@@ -48,11 +97,11 @@
                                         </div>
                                         <input type="text" class="form-control" placeholder="Gas limit" aria-label="gas-limit" aria-describedby="basic-addon1">
                                     </div>
+                                    <div id="submit-button text-center">
+                                        <rounded-button-lg v-bind:text="'Send Transaction'"></rounded-button-lg>
+                                    </div>
                                 </div>
-                                <div class="col-md-3 col-sm-12 rounded shadow-lg order-1 order-md-3 bg-white">
-                                    goodbye
-                                </div>
-                            </div>
+                           </div>
 
                         </div>
                         <div class="tab-pane" id="updates">
@@ -71,9 +120,47 @@
 
 
 <script>
+import RoundedButtonLg from '@/components/RoundedButtonLg';
+var Web3 = require('web3');
+// var Ethers = require('ethers');``
 export default {
     components: {
-        
+        RoundedButtonLg
+    },
+    data(){
+        return {
+            balance: null,
+            gasPrice: null,
+            networks: [
+                {
+                    name: "Infura-mainnet",
+                    address: "wss://mainnet.infura.io/ws"
+                }
+            ],
+            currentNetwork: null,
+            networkStatus: "CONNECTED"
+        }
+    },
+    methods: {
+        changeNetwork: function(netIndex){
+            console.log(netIndex);
+        }
+    },
+    created: function(){
+        this.currentNetwork = this.networks[0];
+
+        this.$store.web3.eth.getBalance(this.$store.wallet.address)
+            .then(data => {
+                this.balance = data;
+            })
+            .catch(console.error);
+
+        this.$store.web3.eth.getGasPrice()
+            .then(data => {
+                console.log(data);
+                this.gasPrice = data;
+            })
+            .catch(console.error);
     }
 }
 </script>
@@ -83,7 +170,7 @@ export default {
 @media (min-width: 0px) {
     #background-container{
         padding-top: 20%;
-        height: 100vh;
+        /* height: 100vh; */
     }
 }
 /* // Small devices (landscape phones, 576px and up) */
@@ -232,6 +319,10 @@ div.card .card-header-danger {
 
 .nav .nav-item {
     position: relative;
+}
+
+#submit-button {
+    width: 100%;
 }
 </style>
 

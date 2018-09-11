@@ -82,13 +82,13 @@ export default {
     },
     methods: {
         unlock: function(){
+                // this.$router.push({name: 'dashboard'});
+            if(this.isValidPrivateKey()){
+                this.$store.wallet = this.$store.web3.eth.accounts.privateKeyToAccount(this.privateKey);
                 this.$router.push({name: 'dashboard'});
-            // if(this.isValidPrivateKey()){
-            //     this.$store.wallet = this.$store.web3.eth.accounts.privateKeyToAccount(this.privateKey);
-            //     this.$router.push({name: 'dashboard'});
-            // }else{
-            //     alert('invalid private key !');
-            // }
+            }else{
+                alert('invalid private key !');
+            }
 
         },
 
