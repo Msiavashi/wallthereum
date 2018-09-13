@@ -31,7 +31,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">Wallet Address</h5>
                                         <p class="card-text">{{$store.wallet.address}}</p>
-                                        <a href="#" class="btn btn-primary">Read More</a>
+                                        <a href="#" class="btn btn-info">Read More</a>
                                     </div>
                                     </div>
                                 </div>
@@ -40,7 +40,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">Account Balance</h5>
                                         <p class="card-text">{{balance}} ETH</p>
-                                        <a href="#" class="btn btn-primary">Read More</a>
+                                        <a href="#" class="btn btn-info">Read More</a>
                                     </div>
                                     </div>
                                 </div>
@@ -48,8 +48,8 @@
                                     <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title">Gas Price</h5>
-                                        <p class="card-text">{{gasPrice}}</p>
-                                        <a href="#" class="btn btn-primary">Read More</a>
+                                        <p class="card-text">{{gasPrice}} Gwei</p>
+                                        <a href="#" class="btn btn-info">Read More</a>
                                     </div>
                                     </div>
                                 </div>
@@ -74,19 +74,19 @@
                             </div>
 
                             <div class="d-flex row flex-wrap justify-content-center">
-                                <div class="col-md-11 col-sm-12 rounded shadow-lg order-3 order-md-1 bg-white">
+                                <div class="col-md-9 col-sm-12 rounded shadow-lg bg-white">
                                     <div class="float-left container py-3 input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="inputGroup-sizing-default">Receiver Address</span>
                                         </div>
-                                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="0x051438f6b33e0a5acf8686754c3d582ceb01dc5be10a0e8f605d23a17ed99930">
+                                        <input type="text" v-model="receiverAddress" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="0x051438f6b33e0a5acf8686754c3d582ceb01dc5be10a0e8f605d23a17ed99930">
                                     </div>
 
                                     <div class="container input-group mb-3" id="amount-field">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1">Amount</span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Enter the amount you want to transfer" aria-label="amount" aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" v-model="transferAmount" placeholder="Enter the amount you want to transfer" aria-label="amount" aria-describedby="basic-addon1">
                                         <div class="input-group-append">
                                             <span class="input-group-text">ETH</span>
                                         </div>
@@ -95,13 +95,13 @@
                                         <div class="input-group-prepend">
                                             <button type="button" data-placement="right" data-container="body" class="btn btn-warning input-group-text" data-toggle="popover" title="Gas limit" data-content="You can see your TX fee (gas limit * gas price) in ETH & USD when you search for your transaction on etherscan.io. This is not a TX fee that MyEtherWallet, or any other service provider, receives. This fee is paid to miners for mining transactions, putting them into blocks, and securing the blockchain." id="basic-addon1"><i class="material-icons"> info </i></button>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Gas limit" aria-label="gas-limit" aria-describedby="basic-addon1">
+                                        <input type="text" class="form-control" v-model="transferGasLimit" placeholder="Gas limit" aria-label="gas-limit" aria-describedby="basic-addon1">
                                     </div>
-                                    <div id="submit-button text-center">
-                                        <rounded-button-lg v-bind:text="'Send Transaction'"></rounded-button-lg>
-                                    </div>
+                                    <rounded-button-lg @click.native="sendTransaction" style="width: 100%" class="btn-success mb-3" v-bind:text="'Send Transaction'"></rounded-button-lg>
                                 </div>
+
                            </div>
+
 
                         </div>
                         <div class="tab-pane" id="updates">
@@ -133,17 +133,43 @@ export default {
             gasPrice: null,
             networks: [
                 {
-                    name: "Infura-mainnet",
-                    address: "wss://mainnet.infura.io/ws"
+                    name: "INFURA-MAINNET",
+                    address: "https://mainnet.infura.io/v3/9f40aaf18aa744a2a68b754027c36eab"
+                },
+                {
+                    name: "INFURA-ROPSTEN",
+                    address: "https://mainnet.infura.io/v3/9f40aaf18aa744a2a68b754027c36eab"
+                },
+                {
+                    name: "INFURA-KOVAN",
+                    address: "https://kovan.infura.io/v3/9f40aaf18aa744a2a68b754027c36eab"
+                },
+                {
+                    name: "INFURA-RINKEBY",
+                    address: "https://rinkeby.infura.io/v3/9f40aaf18aa744a2a68b754027c36eab"
                 }
             ],
             currentNetwork: null,
-            networkStatus: "CONNECTED"
+            networkStatus: "CONNECTED",
+            receiverAddress: null,
+            transferAmount: null,
+            transferGasLimit: null
         }
     },
     methods: {
         changeNetwork: function(netIndex){
             console.log(netIndex);
+        },
+        sendTransaction: function(){
+            let txnCount = this.$store.web3.eth.getTransactionCount(this.$store.web3.eth.accounts[0]);
+            let rawTxn = {
+                nonce: this.$store.web3.toHex(txnCount),
+                gasPrice: this.$store.web3.toHex(this.gasPrice),
+                gasLimit: this.$store.web3.toHex(this.transferGasLimit),
+                to: this.receiverAddress,
+                value: this.$store.web3.toHex(this.transferAmount),
+                data: ''
+            }
         }
     },
     created: function(){
@@ -158,7 +184,7 @@ export default {
         this.$store.web3.eth.getGasPrice()
             .then(data => {
                 console.log(data);
-                this.gasPrice = data;
+                this.gasPrice = this.$store.web3.utils.fromWei(data, "Gwei");
             })
             .catch(console.error);
     }
@@ -322,7 +348,7 @@ div.card .card-header-danger {
 }
 
 #submit-button {
-    width: 100%;
+    /* width: 100%; */
 }
 </style>
 

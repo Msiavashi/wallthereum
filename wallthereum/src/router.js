@@ -38,7 +38,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
 
   // initializing web3
-  store.web3 = new Web3('wss://mainnet.infura.io/ws');
+  store.web3 = new Web3(new web3.providers.HttpProvider('https://mainnet.infura.io/v3/9f40aaf18aa744a2a68b754027c36eab'));
 
   if(to.name == "dashboard" && store.wallet == null){
     router.push({name: 'wallet'});
