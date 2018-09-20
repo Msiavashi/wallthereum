@@ -1,9 +1,8 @@
 <template>
     <header class="header-area overlay">
-    <nav class="navbar navbar-expand-md navbar-dark">
+    <nav class="navbar navbar-expand-md navbar-dark shadow" id="fixed-navbar">
 		<div class="container">
 			<a href="#" class="navbar-brand">wallthereum</a>
-			
 			<button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#main-nav">
 				<span class="menu-icon-bar"></span>
 				<span class="menu-icon-bar"></span>
@@ -12,18 +11,19 @@
 			
 			<div id="main-nav" class="collapse navbar-collapse">
 				<ul class="navbar-nav ml-auto">
+          <network-selector class="nav-item nav-link"></network-selector>
 					<li><router-link to="/" class="nav-item nav-link active">Home</router-link></li>
 					<li><router-link to="wallet" class="nav-item nav-link active">Dashboard</router-link></li>
 					<li><a href="#" class="nav-item nav-link">About Us</a></li>
-					<li class="dropdown">
+					<!-- <li class="dropdown">
 						<a href="#" class="nav-item nav-link" data-toggle="dropdown">Services</a>
 						<div class="dropdown-menu">
 							<a href="#" class="dropdown-item">Dropdown Item 1</a>
 							<a href="#" class="dropdown-item">Dropdown Item 2</a>
 							<a href="#" class="dropdown-item">Dropdown Item 3</a>
 						</div>
-					</li>
-					<li class="dropdown">
+					</li> -->
+					<!-- <li class="dropdown">
 						<a href="#" class="nav-item nav-link" data-toggle="dropdown">Portfolio</a>
 						<div class="dropdown-menu">
 							<a href="#" class="dropdown-item">Dropdown Item 1</a>
@@ -32,7 +32,7 @@
 							<a href="#" class="dropdown-item">Dropdown Item 4</a>
 							<a href="#" class="dropdown-item">Dropdown Item 5</a>
 						</div>
-					</li>
+					</li> -->
 					<li><a href="#" class="nav-item nav-link">Contact</a></li>
 				</ul>
 			</div>
@@ -94,7 +94,7 @@
   padding: 0;
   width: 100%;
   transition: background 0.6s ease-in;
-  z-index: 99999;
+  z-index: 50;
 }
 .navbar .navbar-brand {
   font-family: 'Lobster', cursive;
@@ -147,15 +147,15 @@
 }
 .navbar-dark .navbar-nav .nav-link {
   position: relative;
-  color: #fff;
+  color: #ffffff;
   font-size: 1.6rem;
-}
+}u
 .navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
-  color: #fff;
+  color: rgb(0, 0, 0);
 }
 .navbar .dropdown-menu {
   padding: 0;
-  background-color: rgba(21, 72, 144, .9);
+  background-color: rgba(60, 10, 80, 0.9);
 }
 .navbar .dropdown-menu .dropdown-item {
   position: relative;
@@ -190,20 +190,30 @@
   position: fixed;
   -webkit-animation: navbar-animation 0.6s;
   animation: navbar-animation 0.6s;
-background: #4776E6;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #8E54E9, #4776E6);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #8E54E9, #4776E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  background: rgb(243, 18, 243);  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #15f08a, #e82ce8);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #15f08a, #e82ce8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 
 }
 .navbar.fixed-top.navbar-dark .navbar-nav .nav-link.active {
-  color: #c0ca33;
+  color: #ffffff;
+}
+.navbar.fixed-top.navbar-dark .navbar-nav .nav-link.active:hover {
+  color: #000000;
 }
 .navbar.fixed-top.navbar-dark .navbar-nav .nav-link::after {
-  background-color: #c0ca33;
+  background-color: #ffffff;
 }
 .content {
   padding: 120px 0;
+}
+#fixed-navbar {
+  
+  background: rgb(243, 18, 243);  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #15f08a, #e82ce8);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #15f08a, #e82ce8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 @media screen and (max-width: 768px) {
   .navbar-brand {
@@ -211,10 +221,11 @@ background: linear-gradient(to right, #8E54E9, #4776E6); /* W3C, IE 10+/ Edge, F
   }
   .navbar-nav {
     padding: 0 20px;
-    background-color: rgba(0, 0, 0, .9);
+  background: rgb(243, 18, 243);  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #15f08a, #e82ce8);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #15f08a, #e82ce8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
   .navbar.fixed-top .navbar-nav {
-    background: transparent;
   }
 }
 @media screen and (min-width: 767px) {
@@ -323,8 +334,11 @@ background: linear-gradient(to right, #8E54E9, #4776E6); /* W3C, IE 10+/ Edge, F
 </style>
 
 <script>
-
+import NetworkSelector from '@/components/NetworkSelector';
 export default {
+    components: {
+      NetworkSelector
+    },
     mounted: function(){
         jQuery(function($) {
             $(window).on('scroll', function() {

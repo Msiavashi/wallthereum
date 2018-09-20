@@ -8,6 +8,7 @@ export default new Vuex.Store({
       password: null,
       wallet: null,
       web3: null,
+      connectedNetwork: null
   },
   mutations: {
 

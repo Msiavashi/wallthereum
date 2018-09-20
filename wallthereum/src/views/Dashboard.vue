@@ -1,10 +1,10 @@
 <template>
-<div class="" id="background-container" style="background: linear-gradient(60deg,#ab47bc,#7b1fa2)">
-    <div class="" style="width: 100%">
+<div class="" id="background-container" style="background: rgb(245, 245, 245); padding-top: 80px;">
+    <div class="" style="width: 100%; height: 100%">
         <div>
             <!-- Tabs on Plain Card -->
             <div class="card card-nav-tabs card-plain">
-                <div class="card-header card-header-danger">
+                <div class="card-header card-header-primary">
                     <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                     <div class="nav-tabs-navigation">
                         <div class="nav-tabs-wrapper">
@@ -63,9 +63,6 @@
                                             {{currentNetwork.name}}
                                         </a>
 
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a v-for="(network, index) in networks" class="dropdown-item" :key="index" @click="changeNetwork(index)">{{network.name}}</a>
-                                        </div>
                                         </div>
                                         <!-- <a href="#" class="btn btn-primary">Read More</a> -->
                                     </div>
@@ -121,6 +118,8 @@
 
 <script>
 import RoundedButtonLg from '@/components/RoundedButtonLg';
+import EthereumTx from 'ethereumjs-tx';
+import NetworkManager from '@/NetworkManager';
 var Web3 = require('web3');
 // var Ethers = require('ethers');``
 export default {
@@ -131,24 +130,6 @@ export default {
         return {
             balance: null,
             gasPrice: null,
-            networks: [
-                {
-                    name: "INFURA-MAINNET",
-                    address: "https://mainnet.infura.io/v3/9f40aaf18aa744a2a68b754027c36eab"
-                },
-                {
-                    name: "INFURA-ROPSTEN",
-                    address: "https://mainnet.infura.io/v3/9f40aaf18aa744a2a68b754027c36eab"
-                },
-                {
-                    name: "INFURA-KOVAN",
-                    address: "https://kovan.infura.io/v3/9f40aaf18aa744a2a68b754027c36eab"
-                },
-                {
-                    name: "INFURA-RINKEBY",
-                    address: "https://rinkeby.infura.io/v3/9f40aaf18aa744a2a68b754027c36eab"
-                }
-            ],
             currentNetwork: null,
             networkStatus: "CONNECTED",
             receiverAddress: null,
@@ -161,23 +142,26 @@ export default {
             console.log(netIndex);
         },
         sendTransaction: function(){
+            this.$store.web3.eth.defaultAccount = this.$store.wallet.address;
             let txnCount = this.$store.web3.eth.getTransactionCount(this.$store.web3.eth.accounts[0]);
             let rawTxn = {
-                nonce: this.$store.web3.toHex(txnCount),
-                gasPrice: this.$store.web3.toHex(this.gasPrice),
-                gasLimit: this.$store.web3.toHex(this.transferGasLimit),
-                to: this.receiverAddress,
-                value: this.$store.web3.toHex(this.transferAmount),
-                data: ''
+                "from": this.$store.wallet.address,
+                "nonce": this.$store.web3.toHex(txnCount),
+                "gasPrice": this.$store.web3.toHex(this.$store.web3.toWei(this.gasPrice, "Gwei")),
+                "gasLimit": this.$store.web3.toHex(this.transferGasLimit),
+                "to": this.receiverAddress,
+                "value": this.$store.web3.toHex(this.$store.web3.toWei(this.transferAmount, "ether")),
+                "data": '',
+                "chainId": 1
             }
         }
     },
     created: function(){
-        this.currentNetwork = this.networks[0];
+        this.currentNetwork = NetworkManager.Networks.InfuraMainNet;
 
         this.$store.web3.eth.getBalance(this.$store.wallet.address)
             .then(data => {
-                this.balance = data;
+                this.balance = this.$store.web3.utils.fromWei(data, "ether");
             })
             .catch(console.error);
 
@@ -195,15 +179,15 @@ export default {
 
 @media (min-width: 0px) {
     #background-container{
-        padding-top: 20%;
-        /* height: 100vh; */
+        /* padding-top: 20%; */
+        min-height: 100vh;
     }
 }
 /* // Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
     #background-container{
         padding-top: 6%;
-        height: 100vh;
+        min-height: 100vh;
     }
 }
 
@@ -211,7 +195,7 @@ export default {
 @media (min-width: 768px) {
     #background-container{
         padding-top: 16%;
-        height: 100vh;
+        min-height: 100vh;
     }
 }
 
@@ -219,7 +203,7 @@ export default {
 @media (min-width: 992px) {
     #background-container{
         padding-top: 6%;
-        height: 100vh;
+        min-height: 100vh;
     }
 
     #amount-field {
@@ -232,7 +216,7 @@ export default {
 @media (min-width: 1200px) {
     #background-container{
         padding-top: 6%;
-        height: 100vh;
+        min-height: 100vh;
     }
 
 }

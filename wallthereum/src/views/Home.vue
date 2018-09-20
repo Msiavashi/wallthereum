@@ -5,7 +5,7 @@
                 <div class="row align-self-center" style="z-index: 2; margin: auto">
                     <!-- <h3 class="h3 mt-5 text-white text-center align-self-center"> join the future of trading </h3> -->
                     <div class="input-group mb-3" id="password-group">
-                        <input type="password" @keyup.enter="createWallet" v-model="$store.password" id="pass" class="form-control shadow" placeholder="Enter a password" aria-label="password" aria-describedby="basic-addon2">
+                        <input type="password" @keyup.enter="createWallet" v-model="$store.password" class="form-control shadow" placeholder="Enter a password" aria-label="password" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button data-toggle="modal" data-target="#tutorial" id="create" class="btn btn-outline-secondary bg-secondary shadow text-white  border" type="button">Create Wallet</button>
                         </div>
@@ -14,22 +14,22 @@
                 <div class="align-content-center container-fluid text-center" style="z-index:2">
                     <button type="button" class="btn-change text-white btn btn-round-lg btn-lg shadow" style="background: rgb(91,50,180)">getting started</button>
                     <span class="mx-1"></span>
-                    <button @click="changeRoute('newWallet')" type="button" class="btn-change text-white btn btn-round-lg btn-lg align-self-center shadow" style="background: rgb(86,158,148)">&nbsp&nbsp&nbsp&nbsp already have a wallet? &nbsp&nbsp&nbsp&nbsp</button>
+                    <button @click="changeRoute('dashboard')" type="button" class="btn-change text-white btn btn-round-lg btn-lg align-self-center shadow" style="background: rgb(86,158,148)">&nbsp&nbsp&nbsp&nbsp already have a wallet? &nbsp&nbsp&nbsp&nbsp</button>
                 </div>
             </div>
-            <div class="container d-flex justify-content-center col-sm-6 banner">
-                <img src='http://www.webabridgesolutions.com/images/apple.png' class="align-self-center img-fluid">
+            <div class="container d-flex justify-content-center col-sm-6 banner" style="">
+                <img src='https://cdn4.iconfinder.com/data/icons/cryptocurrency-bitcoin/512/Ethereum_Wallet-01-512.png' class="align-self-center img-fluid" style="">
             <!-- <h1> Keep Your Coins Safe </h1> -->
             </div>
             <svg id='sine' viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-0.35,129.77 C149.99,150.00 399.04,103.13 526.60,145.55 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg>
         </div>
         <!-- header end -->
 
-        <span class="m-2"></span>
+        <div class="mt-5 pt-5">&nbsp;</div>
 
         <!-- content start -->
         <div class="container">
-            <div>
+            <div class="">
                 <h2 class="h2 text-center"> Join the future of Trading </h2>
                 <h5 class="p text-center font-italic font-weight-light text-body text-black-50">
                     Ethereum is an open-source, public, blockchain-based distributed computing platform and operating system featuring smart contract functionality. It supports a modified version of Nakamoto consensus via transaction-based state transitions.
@@ -97,7 +97,7 @@
         </div>
 
 
-        <tutorial-modal></tutorial-modal>
+        <tutorial-modal style="z-index: 10000"></tutorial-modal>
 
     </div>
 
@@ -105,12 +105,6 @@
 
 
 <style scoped>
-
-#pass {
-    height: 40px;
-    width: 300px;
-    padding-left: 10px;
-}
 
 @media (min-width: 768px) {
 
@@ -124,23 +118,19 @@
         position: relative;
         overflow: visible;
         z-index: 2;
-        top: 8%;
+        top: 50px;
     }
 }
 
 @media (min-width: 576px) {
     
-    #pass {
-        height: 40px;
-        width: 300px;
-        padding-left: 10px;
-    }
     .banner {
         position: relative;
         overflow: visible;
         z-index: 20;
-        top: 12%;
+        top: 50px;
     }
+
 }
 
 @media (min-width: 0) {
@@ -149,11 +139,11 @@
         position: relative;
         overflow: visible;
         z-index: 20;
-        top: 0%;
+        top: 50px;
     }
 
     #password-group{
-        margin-top: 18%;
+        margin-top: 80px;
     }
 }
 
@@ -187,9 +177,12 @@ padding-right: 10px;
     position: relative;
     width: 100%;
     height: 100vh;
-    background: #4776E6;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #8E54E9, #4776E6);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #8E54E9, #4776E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-image:  url("http://majesticengineering.com.my/wp-content/uploads/2016/01/background-1.jpg");
+
+  background: rgb(243, 18, 243);  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #15f08a, #e82ce8);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #15f08a, #e82ce8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 .body {

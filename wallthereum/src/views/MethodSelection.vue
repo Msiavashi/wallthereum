@@ -1,12 +1,12 @@
 <template>
 
-    <div class="container-fluid pt-5 d-flex flex-wrap align-content-center justify-content-center" id="background-container">
-        <div class="container d-flex row my-5">
+    <div class="d-flex align-content-center justify-content-center" id="background-container" style="background-color: rgb(245, 245, 245)">
+        <div class="container d-flex row">
         <div class="container" id="background-container">
             <div class="row">
-                <div >
+                <div>
                     <!-- Tabs with icons on Card -->
-                    <div class="card card-nav-tabs">
+                    <div class="card card-nav-tabs shadow">
                         <div class="card-header card-header-primary">
                             <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                             <div class="nav-tabs-navigation">
@@ -14,20 +14,20 @@
                                     <ul class="nav nav-tabs" data-tabs="tabs">
                                         <li class="nav-item">
                                             <a class="nav-link active" href="#profile" data-toggle="tab">
-                                                <i class="material-icons">face</i>
+                                                <i class="material-icons">fingerprint</i>
                                                 Private Key
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="#messages" data-toggle="tab">
-                                                <i class="material-icons">chat</i>
+                                                <i class="material-icons">attach_file</i>
                                                Keystore file 
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="#settings" data-toggle="tab">
-                                                <i class="material-icons">build</i>
-                                                Settings
+                                                <i class="material-icons">info</i>
+                                                Information
                                             </a>
         
                                         </li>
@@ -82,7 +82,7 @@ export default {
     },
     methods: {
         unlock: function(){
-                // this.$router.push({name: 'dashboard'});
+                this.$router.push({name: 'dashboard'});
             if(this.isValidPrivateKey()){
                 this.$store.wallet = this.$store.web3.eth.accounts.privateKeyToAccount(this.privateKey);
                 this.$router.push({name: 'dashboard'});
@@ -106,13 +106,8 @@ export default {
 <style scoped>
 
 #background-container {
-	background: #7474BF;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-    height: 100vh;
-    margin: 0;
-    padding: 0;
+    /* min-height: 100vh; */
+    padding-top: 50px;
 }
 
 

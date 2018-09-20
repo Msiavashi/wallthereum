@@ -1,6 +1,6 @@
 <template>
-<div class="py-sm-5 pt-5 background-style d-flex row align-content-center">
-    <div class="container shadow-lg mt-5 rounded" style="background-color: white">
+<div class="" style="padding-top: 100px; padding-bottom: 50px; background-color: rgb(245, 245, 245);">
+    <div class="container shadow-lg mt-5 rounded" id="tabs-container">
         <div class="d-flex row">
             <div class="col-md-12 text-center ">
                 <nav class="nav-justified">
@@ -51,7 +51,7 @@
                               <h6 class="h5 mt-2 text-danger"> **Make a backup!** Secure it like the millions of dollars it may one day be worth. </h6>
                           </div>
 
-                          <div class="align-self-md-center" style="margin-top: 10%;">
+                          <div class="align-self-md-center" style="margin-top: 5%; margin-bottom:5%;">
                             <button type="button" class="btn btn-round-lg btn-lg btn-change text-white bg-info shadow-lg" href="!#"> Print Wallet Information </button>
                           </div>
 
@@ -77,21 +77,12 @@ Simply place a div with the Bootstrap container class around the navbar. This wi
 .nav-tabs .nav-link.active {
     font-weight:bold;
     background-color: transparent;
-    border-bottom:3px solid #8f94fb;
+    border-bottom:3px solid purple;
     border-right: none;
     border-left: none;
     border-top: none;
     height: 50%;
 }
-
-.background-style{
-  background: #11998e;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  height: 100vh;
-}
-
-
 
 
 .btn-change{
@@ -118,7 +109,10 @@ padding-left: 10px;
 padding-right: 10px;
 }
 
-
+#tabs-container{
+  border-top: 5px solid purple;
+  background-color: white;
+}
 
 </style>
 

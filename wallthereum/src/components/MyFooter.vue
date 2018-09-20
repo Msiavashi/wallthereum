@@ -50,7 +50,7 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
 					<!-- <p><u><a href="https://www.wallthereum.com/">Wallthereum Corporation</a></u> is a Registered MSP/ISO of Elavon, Inc. Georgia [a wholly owned subsidiary of U.S. Bancorp, Minneapolis, MN]</p> -->
-					<p class="h6">&copy All right Reversed.<a class="text-green ml-2" href="https://www.sunlimetech.com" target="_blank">Wallthereum</a></p>
+					<p class="h6" style="color: purple">&copy All right Reversed.<a class="text-green ml-2" href="http://www.wallthereum.com" target="_blank">Wallthereum</a></p>
 				</div>
 				</hr>
 			</div>	
@@ -80,19 +80,23 @@ section .section-title {
     text-transform: uppercase;
 }
 #footer {
-	background: #7474BF;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: #D3CCE3;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+	border-top: 5px solid purple;
 }
 #footer h5{
 	padding-left: 10px;
-    border-left: 3px solid #eeeeee;
+    border-left: 3px solid purple;
     padding-bottom: 6px;
     margin-bottom: 20px;
-    color:#ffffff;
+    color:purple;
 }
 #footer a {
-    color: #ffffff;
+    color: seagreen;
     text-decoration: none !important;
     background-color: transparent;
     -webkit-text-decoration-skip: objects;
@@ -113,10 +117,10 @@ section .section-title {
 }
 #footer ul.social li a,
 #footer ul.quick-links li a{
-	color:#ffffff;
+	color: purple;
 }
 #footer ul.social li a:hover{
-	color:#eeeeee;
+	color: purple;
 }
 #footer ul.quick-links li{
 	padding: 3px 0;
