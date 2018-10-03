@@ -19,7 +19,7 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#messages" data-toggle="tab">
+                                            <a class="nav-link" href="#keystore" data-toggle="tab">
                                                 <i class="material-icons">attach_file</i>
                                                Keystore file 
                                             </a>
@@ -27,7 +27,7 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="#settings" data-toggle="tab">
                                                 <i class="material-icons">info</i>
-                                                Information
+                                                InformationSett
                                             </a>
         
                                         </li>
@@ -48,10 +48,20 @@
                                         </div>
                                         <textarea class="form-control text-center" aria-label="private kye" placeholder="Pate your private key here" v-model="privateKey"></textarea>
                                     </div>
-                                    <rounded-button-lg @click.native="unlock" :disabled="!privateKey" class="text-white deactive text-center" :text="'UNLOCK WALLET'" style="width:100%; background: linear-gradient(60deg,#ab47bc,#7b1fa2)"></rounded-button-lg>
+                                    <rounded-button-lg @click.native="privateKeyUnlock" :disabled="!privateKey" class="text-white deactive text-center" :text="'UNLOCK WALLET'" style="width:100%; background: linear-gradient(60deg,#ab47bc,#7b1fa2)"></rounded-button-lg>
                                 </div>
-                                <div class="tab-pane" id="messages">
+                                <div class="tab-pane" id="keystore">
                                     <p> I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
+                                    <div class="custom-file my-3">
+                                        <input @change="onKeyStoreChange" type="file" class="custom-file-input" id="customFile">
+                                        <label v-if="file" class="custom-file-label" for="customFile">{{file.name}}</label>
+                                        <label v-else class="custom-file-label" for="customFile">Choose file</label>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="password" v-model="password" id="inputPassword5" placeholder="Enter your password" class="form-control" aria-describedby="passwordHelpBlock">
+                                    </div>
+
+                                    <rounded-button-lg @click.native="keyStoreUnlock" :disabled="!file" class="text-white deactive text-center" :text="'UNLOCK WALLET'" style="width:100%; background: linear-gradient(60deg,#ab47bc,#7b1fa2)"></rounded-button-lg>
                                 </div>
                                 <div class="tab-pane" id="settings">
                                     <p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
@@ -75,21 +85,38 @@ var secp256k1 = require('secp256k1');
 
 export default {
     data: () => ({
-        privateKey: null
+        password: null,
+        privateKey: null,
+        file: null
     }),
     components: {
         RoundedButtonLg
     },
     methods: {
-        unlock: function(){
-                this.$router.push({name: 'dashboard'});
+        privateKeyUnlock: function(){
+            // this.$router.push({name: 'dashboard'});
             if(this.isValidPrivateKey()){
                 this.$store.wallet = this.$store.web3.eth.accounts.privateKeyToAccount(this.privateKey);
                 this.$router.push({name: 'dashboard'});
             }else{
                 alert('invalid private key !');
             }
+        },
 
+        keyStoreUnlock: async function(){
+            const reader = new FileReader();
+            let self = this;
+            reader.onload = function() {
+                console.log(self.password);
+                console.log(reader.result);
+                self.$store.wallet = self.$store.web3.eth.accounts.decrypt(reader.result, self.password);
+                // console.log(self.$store.wallet);
+            }
+            reader.readAsText(this.file);
+        },
+        
+        onKeyStoreChange: function(event){
+            this.file = event.target.files[0];
         },
 
         isValidPrivateKey: function(){

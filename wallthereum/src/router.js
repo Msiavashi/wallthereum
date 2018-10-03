@@ -5,6 +5,7 @@ import NewWallet from '@/views/NewWallet.vue'
 import store from '@/store'
 import Dashboard from '@/views/Dashboard.vue'
 import MethodSelection from '@/views/MethodSelection.vue'
+import Networks from '@/NetworkManager'
 
 var Web3 = require('web3');
 
@@ -38,7 +39,10 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
 
   // initializing web3
-  store.web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/v3/9f40aaf18aa744a2a68b754027c36eab'));
+  if (!store.web3){
+    console.log("infura connected");
+    store.web3 = new Web3(new Web3.providers.HttpProvider(Networks.InfuraMainNet.address));
+  }
 
   if(to.name == "dashboard" && store.wallet == null){
     router.push({name: 'wallet'});

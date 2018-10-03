@@ -10,6 +10,8 @@
     <div>
       <my-footer></my-footer>
     </div>
+
+    <loading ref="loading"></loading>
   </div>
 </template>
 
@@ -39,10 +41,12 @@ body {
 <script>
 import StickyNavbar from '@/components/StickyNavbar'
 import MyFooter from '@/components/MyFooter'
+import Loading from '@/components/Loading'
 export default {
   components: {
     StickyNavbar,
-    MyFooter
+    MyFooter,
+    Loading
   }
 }
 </script>

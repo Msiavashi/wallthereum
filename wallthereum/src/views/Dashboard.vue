@@ -26,7 +26,7 @@
                     <div class="tab-content text-center">
                         <div class="tab-pane active" id="home">
                             <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
                                     <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title">Wallet Address</h5>
@@ -35,7 +35,7 @@
                                     </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
                                     <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title">Account Balance</h5>
@@ -44,7 +44,7 @@
                                     </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
                                     <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title">Gas Price</h5>
@@ -53,21 +53,20 @@
                                     </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-3">
+                                <!-- <div class="col-sm-3">
                                     <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title">Network</h5>
                                         <div class="dropdown show">
                                         <p class="card-text">Status: {{networkStatus}}</p>
                                         <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            {{currentNetwork.name}}
                                         </a>
 
                                         </div>
-                                        <!-- <a href="#" class="btn btn-primary">Read More</a> -->
+                                        <a href="#" class="btn btn-primary">Read More</a>
                                     </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
 
                             <div class="d-flex row flex-wrap justify-content-center">
@@ -130,7 +129,6 @@ export default {
         return {
             balance: null,
             gasPrice: null,
-            currentNetwork: null,
             networkStatus: "CONNECTED",
             receiverAddress: null,
             transferAmount: null,
@@ -142,22 +140,46 @@ export default {
             console.log(netIndex);
         },
         sendTransaction: function(){
-            this.$store.web3.eth.defaultAccount = this.$store.wallet.address;
-            let txnCount = this.$store.web3.eth.getTransactionCount(this.$store.web3.eth.accounts[0]);
-            let rawTxn = {
+            console.log("48b598a36b9d8daec47b6e5dff36e84fc47cbbde774a3c06b71d8eca8abdc905".toUpperCase());
+            const txnCount = this.$store.web3.eth.getTransactionCount(this.$store.wallet.address);
+            const rawTxn = {
                 "from": this.$store.wallet.address,
-                "nonce": this.$store.web3.toHex(txnCount),
-                "gasPrice": this.$store.web3.toHex(this.$store.web3.toWei(this.gasPrice, "Gwei")),
-                "gasLimit": this.$store.web3.toHex(this.transferGasLimit),
-                "to": this.receiverAddress,
-                "value": this.$store.web3.toHex(this.$store.web3.toWei(this.transferAmount, "ether")),
+                "nonce": this.$store.web3.utils.toHex(txnCount),
+                "gasPrice": this.$store.web3.utils.toHex(this.$store.web3.utils.toWei(this.gasPrice, "Gwei")),
+                "gasLimit": this.$store.web3.utils.toHex(this.transferGasLimit),
+                "to": this.receiverAddress.toUpperCase(),
+                "value": this.$store.web3.utils.toHex(this.$store.web3.utils.toWei(this.transferAmount, "ether")),
                 "data": '',
                 "chainId": 1
             }
+
+            this.$store.wallet.signTransaction(rawTxn)
+                .then(signedTx => {
+                    this.$store.web3.eth.sendSignedTransaction(signedTx.rawTransaction)
+                        .on('transactionHash', (hash)=> {
+                            console.log("hash");
+                            console.log(hash);
+                        })
+                        .on('receipt', (receipt) => {
+
+                            console.log("receipt");
+                        })
+                        .on('confirmation', (confirmationNumber, receipt) => {
+                            console.log("confirmation");
+                            console.log(confirmationNumber);
+                            console.log(receipt);
+                        })
+                        .on('error', (error) => {
+                            console.log("error");
+                            console.error(error);
+                        });
+
+                }).catch(error => {
+                    console.error(error);
+                });
         }
     },
     created: function(){
-        this.currentNetwork = NetworkManager.Networks.InfuraMainNet;
 
         this.$store.web3.eth.getBalance(this.$store.wallet.address)
             .then(data => {
