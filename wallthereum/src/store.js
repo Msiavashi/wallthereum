@@ -12,8 +12,22 @@ export default new Vuex.Store({
   },
   mutations: {
 
+    PASSWORD(state, password){
+      state.password = password;
+    },
+
+    WALLET(state, newWallet){
+      state.wallet = newWallet;
+    },
+
+    WEB3(state, web3){
+      state.web3 = web3;
+    }
+
   },
+
   actions: {
 
   }
-})
+
+});

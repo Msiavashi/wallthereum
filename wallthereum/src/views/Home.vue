@@ -280,7 +280,18 @@ padding-right: 10px;
 
 <script>
 import TutorialModal from '@/components/TutorialModal'
+import {mapState} from 'vuex'
 export default {
+    computed: {
+        get() {
+            return this.$store.password;
+        },
+
+        set(value) {
+            this.$store.commit("PASSWORD", value);
+        }
+    },
+
     components: {
         TutorialModal
     },
@@ -290,6 +301,7 @@ export default {
             return this.$router.push({name: routeName});
         },
         createWallet: function(){
+            console.log(this.$store.password);
             console.log("salam");
         }
     }

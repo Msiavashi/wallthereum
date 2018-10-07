@@ -109,8 +109,11 @@ export default {
             reader.onload = function() {
                 console.log(self.password);
                 console.log(reader.result);
-                self.$store.wallet = self.$store.web3.eth.accounts.decrypt(reader.result, self.password);
-                // console.log(self.$store.wallet);
+                self.$store.wallet = self.$store.web3.eth.accounts.decrypt(reader.result.toLowerCase(), self.password);
+                if (self.$store.wallet){
+                    self.$router.push({name: 'dashboard'});
+                }
+                console.log(self.$store.wallet);
             }
             reader.readAsText(this.file);
         },
