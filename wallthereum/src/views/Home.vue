@@ -283,12 +283,14 @@ import TutorialModal from '@/components/TutorialModal'
 import {mapState} from 'vuex'
 export default {
     computed: {
-        get() {
-            return this.$store.password;
-        },
+        password: {
+            get() {
+                return this.$store.password;
+            },
 
-        set(value) {
-            this.$store.commit("PASSWORD", value);
+            set (value) {
+                this.$store.commit("PASSWORD", value);
+            }
         }
     },
 

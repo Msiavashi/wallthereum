@@ -44,7 +44,8 @@ export default {
         },
 
         createWallet: function(){
-          this.$store.wallet = this.$store.web3.eth.accounts.create();
+          const wallet = this.$store.state.web3.eth.accounts.create();
+          this.$store.dispatch('WALLET', wallet);
           console.log(this.$store.wallet);
         }
     }

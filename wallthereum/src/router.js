@@ -41,7 +41,10 @@ router.beforeEach((to, from, next) => {
   // initializing web3
   if (!store.web3){
     console.log("infura connected");
-    store.web3 = new Web3(new Web3.providers.HttpProvider(Networks.InfuraMainNet.address));
+    // store.web3 = new Web3(new Web3.providers.HttpProvider(Networks.InfuraMainNet.address));
+    const web3 = new Web3(new Web3.providers.HttpProvider(Networks.InfuraMainNet.address));
+    store.dispatch('WEB3', web3);
+    store.dispatch("CURRENTNETWORK", Networks.InfuraMainNet);
   }
 
   if(to.name == "dashboard" && store.wallet == null){

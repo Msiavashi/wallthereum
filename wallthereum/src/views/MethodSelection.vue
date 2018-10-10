@@ -103,7 +103,7 @@ export default {
             }
         },
 
-        keyStoreUnlock: async function(){
+        keyStoreUnlock: function(){
             const reader = new FileReader();
             let self = this;
             reader.onload = function() {

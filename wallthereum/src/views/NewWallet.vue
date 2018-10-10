@@ -43,7 +43,7 @@
                               <div class="input-group-prepend">
                                 <span class="input-group-text text-danger">Private Key</span>
                               </div>
-                              <textarea readonly class="form-control text-center" aria-label="private kye" v-text="$store.wallet.privateKey"></textarea>
+                              <textarea readonly class="form-control text-center" aria-label="private kye" v-text="$store.state.wallet.privateKey"></textarea>
                             </div>
                           <div class="container">
                               <h6 class="h5 mt-5 text-danger"> **Do not lose it!** It cannot be recovered if you lose it. </h6>
@@ -141,7 +141,7 @@ export default {
     },
 
     downloadKeystore: function(){
-      let keystoreJsonV3 = this.$store.web3.eth.accounts.encrypt(this.$store.wallet.privateKey, this.$store.password);
+      let keystoreJsonV3 = this.$store.state.web3.eth.accounts.encrypt(this.$store.state.wallet.privateKey, this.$store.password);
       this.download(keystoreJsonV3.address, JSON.stringify(keystoreJsonV3));
     }
   }
