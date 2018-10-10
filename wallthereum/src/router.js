@@ -37,12 +37,11 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-
   // initializing web3
-  if (!store.web3){
+  if (!store.getters.getWeb3){
     console.log("infura connected");
-    // store.web3 = new Web3(new Web3.providers.HttpProvider(Networks.InfuraMainNet.address));
-    const web3 = new Web3(new Web3.providers.HttpProvider(Networks.InfuraMainNet.address));
+    // store.state.web3 = new Web3(new Web3.providers.HttpProvider(Networks.InfuraMainNet.address));
+    let web3 = new Web3(new Web3.providers.HttpProvider(Networks.InfuraMainNet.address));
     store.dispatch('WEB3', web3);
     store.dispatch("CURRENTNETWORK", Networks.InfuraMainNet);
   }

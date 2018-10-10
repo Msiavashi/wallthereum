@@ -303,7 +303,7 @@ export default {
             return this.$router.push({name: routeName});
         },
         createWallet: function(){
-            console.log(this.$store.password);
+            console.log(this.$store.state.web3);
             console.log("salam");
         }
     }

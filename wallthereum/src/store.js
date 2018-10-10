@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import web3 from 'web3'
 import { Networks } from '@/NetworkManager';
+import router from '@/router';
 
 Vue.use(Vuex)
 
@@ -42,6 +43,8 @@ export default new Vuex.Store({
       context.commit("WEB3", web3);
     },
 
+    
+
     CURRENTNETWORK(context, network){
       context.commit("CURRENTNETWORK", network);
     },
@@ -50,13 +53,20 @@ export default new Vuex.Store({
       context.state.web3.setProvider(new web3.providers.HttpProvider(newNetwork.address));
       // context.state.web3.currentNetwork = newNetwork;
       context.commit('CURRENTNETWORK', newNetwork);
-      console.log(context.state.web3.currentProvider);
+      if(router.currentRoute.name == "dashboard"){
+        console.log(router.currentRoute);
+        router.push('/wallet');
+      }
     }
   },
   getters: {
     currentNetwork: state => {
       console.log("changes");
       return state.currentNetwork;
+    },
+    
+    getWeb3: state => {
+      return state.web3;
     }
   }
 });

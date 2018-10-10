@@ -141,21 +141,21 @@ export default {
         },
         sendTransaction: function(){
             console.log("48b598a36b9d8daec47b6e5dff36e84fc47cbbde774a3c06b71d8eca8abdc905".toUpperCase());
-            const txnCount = this.$store.web3.eth.getTransactionCount(this.$store.wallet.address);
+            const txnCount = this.$store.state.web3.eth.getTransactionCount(this.$store.wallet.address);
             const rawTxn = {
                 "from": this.$store.wallet.address,
-                "nonce": this.$store.web3.utils.toHex(txnCount),
-                "gasPrice": this.$store.web3.utils.toHex(this.$store.web3.utils.toWei(this.gasPrice, "Gwei")),
-                "gasLimit": this.$store.web3.utils.toHex(this.transferGasLimit),
+                "nonce": this.$store.state.web3.utils.toHex(txnCount),
+                "gasPrice": this.$store.state.web3.utils.toHex(this.$store.web3.utils.toWei(this.gasPrice, "Gwei")),
+                "gasLimit": this.$store.state.web3.utils.toHex(this.transferGasLimit),
                 "to": this.receiverAddress.toUpperCase(),
-                "value": this.$store.web3.utils.toHex(this.$store.web3.utils.toWei(this.transferAmount, "ether")),
+                "value": this.$store.state.web3.utils.toHex(this.$store.state.web3.utils.toWei(this.transferAmount, "ether")),
                 "data": '',
                 "chainId": 1
             }
 
             this.$store.wallet.signTransaction(rawTxn)
                 .then(signedTx => {
-                    this.$store.web3.eth.sendSignedTransaction(signedTx.rawTransaction)
+                    this.$store.state.web3.eth.sendSignedTransaction(signedTx.rawTransaction)
                         .on('transactionHash', (hash)=> {
                             console.log("hash");
                             console.log(hash);
@@ -181,16 +181,16 @@ export default {
     },
     created: function(){
 
-        this.$store.web3.eth.getBalance(this.$store.wallet.address)
+        this.$store.state.web3.eth.getBalance(this.$store.wallet.address)
             .then(data => {
-                this.balance = this.$store.web3.utils.fromWei(data, "ether");
+                this.balance = this.$store.state.web3.utils.fromWei(data, "ether");
             })
             .catch(console.error);
 
-        this.$store.web3.eth.getGasPrice()
+        this.$store.state.web3.eth.getGasPrice()
             .then(data => {
                 console.log(data);
-                this.gasPrice = this.$store.web3.utils.fromWei(data, "Gwei");
+                this.gasPrice = this.$store.state.web3.utils.fromWei(data, "Gwei");
             })
             .catch(console.error);
     }
