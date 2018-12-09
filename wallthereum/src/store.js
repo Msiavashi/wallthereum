@@ -54,15 +54,17 @@ export default new Vuex.Store({
       // context.state.web3.currentNetwork = newNetwork;
       context.commit('CURRENTNETWORK', newNetwork);
       if(router.currentRoute.name == "dashboard"){
-        console.log(router.currentRoute);
         router.push('/wallet');
       }
     }
   },
   getters: {
     currentNetwork: state => {
-      console.log("changes");
       return state.currentNetwork;
+    },
+
+    getWallet: state => {
+      return state.wallet;
     },
     
     getWeb3: state => {

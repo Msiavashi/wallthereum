@@ -17,12 +17,11 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#history" data-toggle="tab">Transactions History</a>
-                                </li>
+                               </li>
                             </ul>
                         </div>
                     </div>
                 </div><div class="card-body ">
-
                     <div class="tab-content text-center">
                         <div class="tab-pane active" id="home">
                             <div class="row">
@@ -93,12 +92,13 @@
                                         </div>
                                         <input type="text" class="form-control" v-model="transferGasLimit" placeholder="Gas limit" aria-label="gas-limit" aria-describedby="basic-addon1">
                                     </div>
-                                    <rounded-button-lg @click.native="sendTransaction" style="width: 100%" class="btn-success mb-3" v-bind:text="'Send Transaction'"></rounded-button-lg>
+                                    <!-- <rounded-button-lg data-modal="modal" data-target="#confirmationModal" style="width: 100%" class="btn-success mb-3" v-bind:text="'Send Transaction'"></rounded-button-lg> -->
+                                    <button type="button" @click="onConfirmClicked()" class="btn btn-primary" data-toggle="modal" style="width: 100%" data-target="#transactionConfirmationModal">
+                                        Send Transaction
+                                    </button>
+
                                 </div>
-
                            </div>
-
-
                         </div>
                         <div class="tab-pane" id="updates">
                             <p> I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. </p>
@@ -111,6 +111,88 @@
             <!-- End Tabs on plain Card -->
             </div>
         </div>
+
+    <!-- transaction confirmaiton modal-->
+        <div class="modal fade" id="transactionConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Send Transaction</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Sender And Receiver Information -->
+                <h5 class="heading">Sender & Receiver</h5>
+                <hr>
+                <div class="row justify-content-center mx-auto">
+                    <div class="col-4 text-center">
+                        <h4 class="h4 title" >Sender Address</h4>
+                        <p style="word-wrap: break-word">{{$store.wallet.address}}</p>
+                    </div>
+                    <div class="col-4 text-center">
+                        <h4 class="h4 title" >Transfer Amount</h4>
+                        <p style="word-wrap: break-word"> {{transferAmount}} </p>
+                    </div>
+                    <div class="col-4 text-center">
+                        <h4 class="h4 title" >Receiver Address</h4>
+                        <p style="word-wrap: break-word">{{receiverAddress}}</p>
+                    </div>
+                </div>
+                <!-- End of Sender And Receiver Information -->
+                <hr>
+                <div class="container-fluid row">
+                    <!-- Sign Transaction Hash Section -->
+                    <div class="row container-fluid">
+                        <div class="col-md-6">
+                            <h6 class="h6">Raw Transaction</h6>
+                            <textarea readonly disabled class="m-auto" rows="5" style="width: 100%" v-text="rawTransaction"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="h6">Signed Transaction</h6>
+                            <textarea readonly disabled class="m-auto" rows="5" style="width: 100%" v-text="signedTransaction"></textarea>
+                        </div>
+                    </div>
+                    <!-- end of Sign Transaction Hash Section -->
+                </div>
+                <hr>
+                <!-- transaction table start -->
+                <div class="container-fluid row">
+                    <h5 class="h5 title"> Transaction Information </h5>
+                    <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                        <th scope="row">Receiver Address</th>
+                        <td>{{receiverAddress}}</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">Sender Address</th>
+                        <td>{{$store.wallet.address}}</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">Transfer Amount</th>
+                        <td colspan="2">{{transferAmount}} ETH</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">Account Balance</th>
+                        <td colspan="2">{{balance}} ETH</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+                <!-- transaction table end -->
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Abort</button>
+                <button type="button" class="btn btn-primary" @click="sendTransaction()">Send</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+
 </div>
 </template>
 
@@ -127,63 +209,84 @@ export default {
     },
     data(){
         return {
+            rawTransaction: null,
+            signedTransaction: null,
             balance: null,
             gasPrice: null,
             networkStatus: "CONNECTED",
             receiverAddress: null,
             transferAmount: null,
-            transferGasLimit: null
+            transferGasLimit: 21000
         }
     },
+
     methods: {
         changeNetwork: function(netIndex){
             console.log(netIndex);
         },
-        sendTransaction: function(){
-            console.log("48b598a36b9d8daec47b6e5dff36e84fc47cbbde774a3c06b71d8eca8abdc905".toUpperCase());
+
+        getRawTransaction: function(){
             const txnCount = this.$store.state.web3.eth.getTransactionCount(this.$store.wallet.address);
-            const rawTxn = {
+            return {
                 "from": this.$store.wallet.address,
-                "nonce": this.$store.state.web3.utils.toHex(txnCount),
-                "gasPrice": this.$store.state.web3.utils.toHex(this.$store.web3.utils.toWei(this.gasPrice, "Gwei")),
+                // "nonce": this.$store.state.web3.utils.toHex(txnCount),
+                "gasPrice": this.$store.state.web3.utils.toHex(this.$store.state.web3.utils.toWei(this.gasPrice, "Gwei")),
                 "gasLimit": this.$store.state.web3.utils.toHex(this.transferGasLimit),
                 "to": this.receiverAddress.toUpperCase(),
                 "value": this.$store.state.web3.utils.toHex(this.$store.state.web3.utils.toWei(this.transferAmount, "ether")),
                 "data": '',
-                "chainId": 1
+                "chainId": 42
             }
+        },
 
+        onConfirmClicked: function(){
+            const rawTxn = this.getRawTransaction();
+            let self = this;
             this.$store.wallet.signTransaction(rawTxn)
                 .then(signedTx => {
-                    this.$store.state.web3.eth.sendSignedTransaction(signedTx.rawTransaction)
-                        .on('transactionHash', (hash)=> {
-                            console.log("hash");
-                            console.log(hash);
-                        })
-                        .on('receipt', (receipt) => {
+                    console.log(signedTx)
+                    self.signedTransaction = signedTx;
+                    self.rawTransaction = rawTxn;
+                }).catch(err => {
+                    console.error(err);
+                })
 
-                            console.log("receipt");
-                        })
-                        .on('confirmation', (confirmationNumber, receipt) => {
-                            console.log("confirmation");
-                            console.log(confirmationNumber);
-                            console.log(receipt);
-                        })
-                        .on('error', (error) => {
-                            console.log("error");
-                            console.error(error);
-                        });
+        },
 
-                }).catch(error => {
-                    console.error(error);
-                });
+        sendTransaction: function(){
+            const rawTxn = this.getRawTransaction();
+            // this.$store.wallet.signTransaction(rawTxn)
+            //     .then(signedTx => {
+            //         this.$store.state.web3.eth.sendSignedTransaction(signedTx.rawTransaction)
+            //             .on('transactionHash', (hash)=> {
+            //                 console.log("hash");
+            //                 console.log(hash);
+            //             })
+            //             .on('receipt', (receipt) => {
+            //                 console.log("receipt");
+            //             })
+            //             .on('confirmation', (confirmationNumber, receipt) => {
+            //                 console.log("confirmation");
+            //                 console.log(confirmationNumber);
+            //                 console.log(receipt);
+            //             })
+            //             .on('error', (error) => {
+            //                 console.log("error");
+            //                 console.error(error);
+            //             });
+
+            //     }).catch(error => {
+            //         console.error(error);
+            //     });
         }
     },
     created: function(){
+        this.$parent.$refs.loading.isLoading = true;
 
         this.$store.state.web3.eth.getBalance(this.$store.wallet.address)
             .then(data => {
                 this.balance = this.$store.state.web3.utils.fromWei(data, "ether");
+                this.$parent.$refs.loading.isLoading =  this.gasPrice && this.balance && false;
             })
             .catch(console.error);
 
@@ -191,8 +294,11 @@ export default {
             .then(data => {
                 console.log(data);
                 this.gasPrice = this.$store.state.web3.utils.fromWei(data, "Gwei");
+                this.$parent.$refs.loading.isLoading = this.gasPrice && this.balance && false;
             })
             .catch(console.error);
+        
+
     }
 }
 </script>
@@ -357,6 +463,3 @@ div.card .card-header-danger {
     /* width: 100%; */
 }
 </style>
-
-
-
