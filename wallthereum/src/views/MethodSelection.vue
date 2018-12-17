@@ -96,7 +96,7 @@ export default {
         privateKeyUnlock: function(){
             // this.$router.push({name: 'dashboard'});
             if(this.isValidPrivateKey()){
-                this.$store.wallet = this.$store.state.web3.eth.accounts.privateKeyToAccount(this.privateKey);
+                this.$store.wallet = this.$store.getters.getWeb3.eth.accounts.privateKeyToAccount(this.privateKey);
                 this.$router.push({name: 'dashboard'});
             }else{
                 alert('invalid private key !');
@@ -107,9 +107,7 @@ export default {
             const reader = new FileReader();
             let self = this;
             reader.onload = function() {
-                console.log(self.password);
-                console.log(reader.result);
-                self.$store.wallet = self.$store.state.web3.eth.accounts.decrypt(reader.result.toLowerCase(), self.password);
+                self.$store.wallet = self.$store.getters.getWeb3.eth.accounts.decrypt(reader.result.toLowerCase(), self.password);
                 if (self.$store.wallet){
                     self.$router.push({name: 'dashboard'});
                 }

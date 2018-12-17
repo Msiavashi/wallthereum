@@ -29,7 +29,7 @@ export default new Vuex.Store({
 
     CURRENTNETWORK(state, currentNetwork){
       // state.web3.currentNetwork = currentNetwork;
-      state.web3.currentProvider.name = currentNetwork.name
+      state.web3.currentProvider.network = currentNetwork;
     }
 
   },
@@ -60,6 +60,7 @@ export default new Vuex.Store({
   },
   getters: {
     currentNetwork: state => {
+      console.log("getting curent netwrok");
       return state.currentNetwork;
     },
 

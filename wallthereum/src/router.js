@@ -6,9 +6,9 @@ import store from '@/store'
 import Dashboard from '@/views/Dashboard.vue'
 import MethodSelection from '@/views/MethodSelection.vue'
 import Networks from '@/NetworkManager'
+import VuexPersist from 'vuex-persist';
 
 var Web3 = require('web3');
-
 Vue.use(Router)
 
 const router = new Router({
@@ -39,11 +39,11 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   // initializing web3
   if (!store.getters.getWeb3){
-    console.log("infura connected");
     // store.state.web3 = new Web3(new Web3.providers.HttpProvider(Networks.InfuraMainNet.address));
-    let web3 = new Web3(new Web3.providers.HttpProvider(Networks.InfuraMainNet.address));
+    // console.log(JOSN.parse(localStorage.getItem('currentProvider')));
+    let web3 = new Web3(new Web3.providers.HttpProvider(localStorage.getItem('currentProvider') ? JSON.parse(localStorage.getItem('currentProvider')).address : Networks.InfuraMainNet.address));
     store.dispatch('WEB3', web3);
-    store.dispatch("CURRENTNETWORK", Networks.InfuraMainNet);
+    store.dispatch("CURRENTNETWORK", JSON.parse(localStorage.getItem('currentProvider')) || Networks.InfuraMainNet);
   }
 
   if(to.name == "dashboard" && store.wallet == null){

@@ -17,9 +17,12 @@ import { mapState } from 'vuex';
 import Web3 from 'web3';
 export default {
     computed: {
-        ...mapState({
-            currentNetwork: state => state.web3.currentProvider
-        }),
+        // ...mapState({
+        //     currentNetwork: state => state.web3.currentProvider
+        // }),
+        currentNetwork() {
+            return this.$store.getters.getWeb3.currentProvider.network;
+        },
         networks: () => {
             return Networks;
         },
@@ -33,6 +36,11 @@ export default {
         changeNetwork: function(network){
             this.$parent.$parent.$refs.loading.isLoading = true;
             // const web3 = new Web3(new Web3.providers.HttpProvider(network.address));
+
+            // save to localStorage
+            const parsed = JSON.stringify(network);
+            localStorage.setItem('currentProvider', parsed);
+
             this.$store.dispatch("changeProvider", network);
             this.$store.state.web3.eth.net.isListening().then((s) => {
                 this.$parent.$parent.$refs.loading.isLoading = false;

@@ -21,7 +21,36 @@
                             </ul>
                         </div>
                     </div>
-                </div><div class="card-body ">
+                </div><div class="card-body">
+                
+                <div class="container" v-if="txnAlert">
+                    <!-- start of transaction success alert -->
+                    <div class="alert alert-success" role="alert" v-if="txnSuccess">
+                        <h4 class="alert-heading">Transaction Sent</h4>
+                        <p>Congradulations. Your Transaction has been successfully broadcasted to the ethereum blockchain network.
+                            <br>
+                            To track your transaction status on <a href="https://etherscan.io" rel="noopener noreferrer" target="_blank">etherscan.io</a> please click the link below.
+                            <br>
+                            <a target="_blank" rel="noopener noreferrer" :href="''+$store.getters.getWeb3.currentProvider.network.etherscanAddressTx+''+txnHash+''">Transaction Status</a>
+                        </p>
+                        <hr>
+                        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+                    </div>
+                    <!-- end of transaction success alert -->
+                    
+                    <!-- start of transaction failure alert -->
+                    <div class="alert alert-danger" role="alert" v-else>
+                        <h4 class="alert-heading">Ooooops...!</h4>
+                        <p>
+                            An error happened during Transaction. please read the error below carefully to resolve the problem.
+                        </p>
+                        <hr>
+                        <p class="mb-0">{{txnError.message}}</p>
+                    </div>
+                    <!-- end of transaction failure alert -->
+                </div>
+
+
                     <div class="tab-content text-center">
                         <div class="tab-pane active" id="home">
                             <div class="row">
@@ -178,6 +207,26 @@
                         <th scope="row">Account Balance</th>
                         <td colspan="2">{{balance}} ETH</td>
                         </tr>
+                        <tr>
+                        <th scope="row">Network</th>
+                        <td colspan="2">{{network}}</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">Gas Limit</th>
+                        <td colspan="2">{{transferGasLimit}}</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">Gas Price</th>
+                        <td colspan="2">{{gasPrice}} Gwei</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">Max Transaction Fee</th>
+                        <td colspan="2">{{txnFee}} ETH</td>
+                        </tr>
+                        <!-- <tr>
+                        <th scope="row">Nonce</th>
+                        <td colspan="2">{{txnCount}}</td>
+                        </tr> -->
                     </tbody>
                     </table>
                 </div>
@@ -201,6 +250,7 @@
 import RoundedButtonLg from '@/components/RoundedButtonLg';
 import EthereumTx from 'ethereumjs-tx';
 import NetworkManager from '@/NetworkManager';
+
 var Web3 = require('web3');
 // var Ethers = require('ethers');``
 export default {
@@ -209,6 +259,9 @@ export default {
     },
     data(){
         return {
+            txnError: null,
+            txnAlert: false,
+            txnSuccess: false,
             rawTransaction: null,
             signedTransaction: null,
             balance: null,
@@ -216,68 +269,88 @@ export default {
             networkStatus: "CONNECTED",
             receiverAddress: null,
             transferAmount: null,
-            transferGasLimit: 21000
+            transferGasLimit: 21000,
+            txnFee: null,
+            txnHash: null
+        }
+    },
+
+    computed: {
+        network() {
+            return this.$store.getters.getWeb3.currentProvider.network.name;
         }
     },
 
     methods: {
-        changeNetwork: function(netIndex){
-            console.log(netIndex);
-        },
-
+        // "nonce": this.$store.state.web3.utils.toHex(txnCount),
         getRawTransaction: function(){
             const txnCount = this.$store.state.web3.eth.getTransactionCount(this.$store.wallet.address);
             return {
                 "from": this.$store.wallet.address,
-                // "nonce": this.$store.state.web3.utils.toHex(txnCount),
                 "gasPrice": this.$store.state.web3.utils.toHex(this.$store.state.web3.utils.toWei(this.gasPrice, "Gwei")),
                 "gasLimit": this.$store.state.web3.utils.toHex(this.transferGasLimit),
                 "to": this.receiverAddress.toUpperCase(),
                 "value": this.$store.state.web3.utils.toHex(this.$store.state.web3.utils.toWei(this.transferAmount, "ether")),
                 "data": '',
-                "chainId": 42
+                "chainId": this.$store.getters.getWeb3.currentProvider.network.chainId
             }
         },
 
         onConfirmClicked: function(){
             const rawTxn = this.getRawTransaction();
             let self = this;
+
+            // calculate txn fee
+            const txnFeeWei = this.$store.state.web3.utils.toWei(this.gasPrice, "Gwei") * this.transferGasLimit;
+            this.txnFee = this.$store.state.web3.utils.fromWei(this.$store.state.web3.utils.toBN(txnFeeWei.toString()), 'ether');
+            console.log(this.txnFee);
+
             this.$store.wallet.signTransaction(rawTxn)
                 .then(signedTx => {
-                    console.log(signedTx)
                     self.signedTransaction = signedTx;
                     self.rawTransaction = rawTxn;
                 }).catch(err => {
                     console.error(err);
                 })
-
         },
 
         sendTransaction: function(){
             const rawTxn = this.getRawTransaction();
-            // this.$store.wallet.signTransaction(rawTxn)
-            //     .then(signedTx => {
-            //         this.$store.state.web3.eth.sendSignedTransaction(signedTx.rawTransaction)
-            //             .on('transactionHash', (hash)=> {
-            //                 console.log("hash");
-            //                 console.log(hash);
-            //             })
-            //             .on('receipt', (receipt) => {
-            //                 console.log("receipt");
-            //             })
-            //             .on('confirmation', (confirmationNumber, receipt) => {
-            //                 console.log("confirmation");
-            //                 console.log(confirmationNumber);
-            //                 console.log(receipt);
-            //             })
-            //             .on('error', (error) => {
-            //                 console.log("error");
-            //                 console.error(error);
-            //             });
+            let choice = confirm("are you sure you want to send the Transaction ?");
+            let self = this;
+            if (choice){
+                this.$store.wallet.signTransaction(rawTxn)
+                    .then(signedTx => {
+                        this.$store.state.web3.eth.sendSignedTransaction(signedTx.rawTransaction)
+                            .on('transactionHash', (hash)=> {
+                                console.log("hash");
+                                console.log(hash);
+                                self.txnHash = hash;
+                                self.txnSuccess = true;
+                                self.txnAlert = true;
+                            })
+                            .on('receipt', (receipt) => {
+                                console.log("receipt");
+                            })
+                            .on('confirmation', (confirmationNumber, receipt) => {
+                                console.log("confirmation");
+                                console.log(confirmationNumber);
+                                console.log(receipt);
+                            })
+                            .on('error', (error) => {
+                                console.error(error);
+                                self.txnSuccess = false;
+                                self.txnError = error;
+                                self.txnAlert = true;
+                                console.log("error");
+                                console.log(error.message);
 
-            //     }).catch(error => {
-            //         console.error(error);
-            //     });
+                            });
+
+                    }).catch(error => {
+                        // console.error(error);
+                    });
+            }
         }
     },
     created: function(){
@@ -292,7 +365,6 @@ export default {
 
         this.$store.state.web3.eth.getGasPrice()
             .then(data => {
-                console.log(data);
                 this.gasPrice = this.$store.state.web3.utils.fromWei(data, "Gwei");
                 this.$parent.$refs.loading.isLoading = this.gasPrice && this.balance && false;
             })
@@ -317,6 +389,7 @@ export default {
         padding-top: 6%;
         min-height: 100vh;
     }
+    
 }
 
 /* // Medium devices (tablets, 768px and up) */
