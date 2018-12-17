@@ -23,7 +23,7 @@
                     </div>
                 </div><div class="card-body">
                 
-                <div class="container" v-if="txnAlert">
+                <div class="container" v-show="txnAlert" id="txnAlert">
                     <!-- start of transaction success alert -->
                     <div class="alert alert-success" role="alert" v-if="txnSuccess">
                         <h4 class="alert-heading">Transaction Sent</h4>
@@ -259,7 +259,7 @@ export default {
     },
     data(){
         return {
-            txnError: null,
+            txnError: false,
             txnAlert: false,
             txnSuccess: false,
             rawTransaction: null,
@@ -328,6 +328,10 @@ export default {
                                 self.txnHash = hash;
                                 self.txnSuccess = true;
                                 self.txnAlert = true;
+                                $("#transactionConfirmationModal").modal('hide');
+                                $('html,body').animate({
+                                        scrollTop: $("#txnAlert").offset().top},
+                                        'slow');
                             })
                             .on('receipt', (receipt) => {
                                 console.log("receipt");
@@ -344,11 +348,14 @@ export default {
                                 self.txnAlert = true;
                                 console.log("error");
                                 console.log(error.message);
-
+                                $("#transactionConfirmationModal").modal('hide');
+                                $('html,body').animate({
+                                        scrollTop: $("#txnAlert").offset().top},
+                                        'slow');
                             });
 
                     }).catch(error => {
-                        // console.error(error);
+                        console.error(error);
                     });
             }
         }
