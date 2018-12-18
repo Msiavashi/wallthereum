@@ -13,7 +13,7 @@
                                     <a class="nav-link active" href="#home" data-toggle="tab">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#updates" data-toggle="tab">Updates</a>
+                                    <a class="nav-link" href="#updates" data-toggle="tab">Charts</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#history" data-toggle="tab">Transactions History</a>
@@ -59,7 +59,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">Wallet Address</h5>
                                         <p class="card-text">{{$store.wallet.address}}</p>
-                                        <a href="#" class="btn btn-info">Read More</a>
+                                        <button @click="onWalletAddressReadMeClicked()" class="btn btn-info">Read More</button>
                                     </div>
                                     </div>
                                 </div>
@@ -77,7 +77,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">Gas Price</h5>
                                         <p class="card-text">{{gasPrice}} Gwei</p>
-                                        <a href="#" class="btn btn-info">Read More</a>
+                                        <button  @click="onGasPriceReadMeClicked()" class="btn btn-info">Read More</button>
                                     </div>
                                     </div>
                                 </div>
@@ -117,21 +117,26 @@
                                     </div>
                                     <div class="container input-group mb-3" id="amount-field">
                                         <div class="input-group-prepend">
-                                            <button type="button" data-placement="right" data-container="body" class="btn btn-warning input-group-text" data-toggle="popover" title="Gas limit" data-content="You can see your TX fee (gas limit * gas price) in ETH & USD when you search for your transaction on etherscan.io. This is not a TX fee that MyEtherWallet, or any other service provider, receives. This fee is paid to miners for mining transactions, putting them into blocks, and securing the blockchain." id="basic-addon1"><i class="material-icons"> info </i></button>
+                                            <button type="button" @click="onGasLimitInfoClicked()" data-placement="right" data-container="body" class="btn btn-warning input-group-text" data-toggle="popover" title="Click To Read More" data-content="You can see your TX fee (gas limit * gas price) in ETH & USD when you search for your transaction on etherscan.io. This is not a TX fee that MyEtherWallet, or any other service provider, receives. This fee is paid to miners for mining transactions, putting them into blocks, and securing the blockchain." id="basic-addon1"><i class="material-icons"> info </i></button>
                                         </div>
                                         <input type="text" class="form-control" v-model="transferGasLimit" placeholder="Gas limit" aria-label="gas-limit" aria-describedby="basic-addon1">
                                     </div>
                                     <!-- <rounded-button-lg data-modal="modal" data-target="#confirmationModal" style="width: 100%" class="btn-success mb-3" v-bind:text="'Send Transaction'"></rounded-button-lg> -->
-                                    <button type="button" @click="onConfirmClicked()" class="btn btn-primary" data-toggle="modal" style="width: 100%" data-target="#transactionConfirmationModal">
+                                    <button type="button" @click="onConfirmClicked()" class="mb-3 btn btn-primary" data-toggle="modal" style="width: 100%" data-target="#transactionConfirmationModal">
                                         Send Transaction
                                     </button>
 
                                 </div>
                            </div>
                         </div>
+
+
+
                         <div class="tab-pane" id="updates">
-                            <p> I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. </p>
+                            <p> salam </p>
                         </div>
+
+
                         <div class="tab-pane" id="history">
                             <p> I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
                         </div>
@@ -243,7 +248,7 @@
 
         <!-- Read More Modal -->
 
-        <read-more-modal content="salam" title="test"></read-more-modal>
+        <read-more-modal v-bind:html="readMoreModalHtml" v-bind:title="this.readMoreModalTitle"></read-more-modal>
 
         <!-- end of Read More Modal -->
 
@@ -266,6 +271,8 @@ export default {
     },
     data(){
         return {
+            readMoreModalHtml: null,
+            readMoreModalTitle: null,
             txnError: false,
             txnAlert: false,
             txnSuccess: false,
@@ -289,9 +296,28 @@ export default {
     },
 
     methods: {
+        onGasLimitInfoClicked: function(){
+            this.readMoreModalHtml = "To do anything on the Ethereum platform, you need to pay for it, and the payment (or fee) is calculated in Ether (ETH) via an intermediary benchmark called gas limit and gas price.This equation is used for calculating ETH (or Transaction fees): <br> <br> <p class='card card-block text-center italic'> Ether = Tx Fees = Gas Limit * Gas Price</p> <br> lowering down the gas price will make the transaction take longer to be mined. This happens because all miners want to mine a transaction that has a higher mining reward (i.e. higher Tx fee). Also have in mind that minimum Gas Limit is 21000.";
+            this.readMoreModalTitle = "Gas Limit";
+            $("#readMoreModal").modal('show');
+        },
+
+        onGasPriceReadMeClicked: function(){
+            this.readMoreModalTitle = "Gas Price";
+            this.readMoreModalHtml = "Gas is a unit denoting price of computation on the Ethereum, paid in Ether by users to miners in order to utilize the computational power of the network. A gas limit is the maximum amount of computational units that is allowed for your particular transaction. The total cost of a transaction (the transaction fee) is the gas price (in Ether) multiplied by the gas limit. This is similar to paying for gas at the gas station — $3.50 (gas price) per gallon (unit). 10 units comes out to a transaction price of $35.";
+            $("#readMoreModal").modal('show');
+        },
+
+        onWalletAddressReadMeClicked: function(){
+            this.readMoreModalTitle = "Wallet Address";
+            this.readMoreModalHtml = "Your Address is the address of your wallet. You'll use this address to receive funds, like ETH and custom Ethereum tokens.";
+            $("#readMoreModal").modal('show');
+        },
 
         onAccountBalanceReadMeClicked: function(){
-            $("#readMeModal").modal('show');
+            this.readMoreModalTitle = "Account Balance";
+            this.readMoreModalHtml = "Your Total Ethereum Deposit. Transaction Amount could not exceed your total balance";
+            $("#readMoreModal").modal('show');
             
         },
 

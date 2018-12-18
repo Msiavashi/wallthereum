@@ -1,6 +1,6 @@
 <template>
  <!-- Modal -->
-<div class="modal fade" id="readMeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="readMoreModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -9,12 +9,12 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        {{content}}
+      <div class="modal-body" v-html="html">
+          <!-- html content will load -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Done</button> -->
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@
 
 <script>
 export default {
-    props: ["title", "content"]
+    props: ["title", "html"]
 }
 </script>
 
