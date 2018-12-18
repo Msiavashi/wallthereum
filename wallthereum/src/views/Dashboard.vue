@@ -68,7 +68,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">Account Balance</h5>
                                         <p class="card-text">{{balance}} ETH</p>
-                                        <a href="#" class="btn btn-info">Read More</a>
+                                        <button @click="onAccountBalanceReadMeClicked()" class="btn btn-info">Read More</button>
                                     </div>
                                     </div>
                                 </div>
@@ -241,6 +241,11 @@
         </div>
         </div>
 
+        <!-- Read More Modal -->
+
+        <read-more-modal content="salam" title="test"></read-more-modal>
+
+        <!-- end of Read More Modal -->
 
 </div>
 </template>
@@ -250,12 +255,14 @@
 import RoundedButtonLg from '@/components/RoundedButtonLg';
 import EthereumTx from 'ethereumjs-tx';
 import NetworkManager from '@/NetworkManager';
+import ReadMoreModal from '@/components/ReadMoreModal';
 
 var Web3 = require('web3');
 // var Ethers = require('ethers');``
 export default {
     components: {
-        RoundedButtonLg
+        RoundedButtonLg,
+        ReadMoreModal
     },
     data(){
         return {
@@ -282,6 +289,12 @@ export default {
     },
 
     methods: {
+
+        onAccountBalanceReadMeClicked: function(){
+            $("#readMeModal").modal('show');
+            
+        },
+
         // "nonce": this.$store.state.web3.utils.toHex(txnCount),
         getRawTransaction: function(){
             const txnCount = this.$store.state.web3.eth.getTransactionCount(this.$store.wallet.address);
