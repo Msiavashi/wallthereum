@@ -89,6 +89,12 @@
                 </div>
                 <!-- feature boxes -->
 
+                <!-- user guideline -->
+                <div>
+                    <user-guide></user-guide>
+                </div>
+                <!-- end of user guideline -->
+
             </div>
 
             <div>
@@ -279,8 +285,10 @@ padding-right: 10px;
 </style>
 
 <script>
-import TutorialModal from '@/components/TutorialModal'
-import {mapState} from 'vuex'
+import TutorialModal from '@/components/TutorialModal';
+import UserGuide from '@/components/UserGuide';
+import {mapState} from 'vuex';
+
 export default {
     computed: {
         password: {
@@ -288,14 +296,15 @@ export default {
                 return this.$store.password;
             },
 
-            set (value) {
+            set(value) {
                 this.$store.commit("PASSWORD", value);
             }
         }
     },
 
     components: {
-        TutorialModal
+        TutorialModal,
+        UserGuide
     },
 
     methods: {
