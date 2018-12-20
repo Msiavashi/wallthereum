@@ -25,9 +25,9 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#settings" data-toggle="tab">
-                                                <i class="material-icons">info</i>
-                                                InformationSett
+                                            <a class="nav-link" href="#metamask" data-toggle="tab">
+                                                <i class="material-icons">extension</i>
+                                                MetaMask
                                             </a>
         
                                         </li>
@@ -37,21 +37,32 @@
                         </div><div class="card-body ">
                             <div class="tab-content text-center">
                                 <div class="tab-pane active" id="profile">
-                                    <p> Entering your private key on a website is dangerous. If our website is compromised or you accidentally visit a different website, your funds will be stolen. Please consider:
-                                    MetaMask or A Hardware Wallet or Running MEW Offline & Locally
-                                    Learning How to Protect Yourself and Your Funds
-                                    If you must, please double-check the URL & SSL cert. It should say https://www.myetherwallet.com & MYETHERWALLET INC in your URL bar. 
-                                    </p>
+                                    <div class="mb-3"> 
+                                        <h6 class="h6 p-3 bg-light shadow-sm text-center text-success card card-block italic">The format of your private key is 3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe266.</h6>
+                                        <h5 class="h5 text-danger mb-3 font-weight-bold font-italic"> * WARNING *</h5> 
+                                        <p class="text-justify"> Before entering your private key please double check the site address and SSL certificate, it should say <a class="text-danger font-italic" href="https://wallthereum.com"> https://wallthereum.com  </a> and <span class="font-italic text-danger"> SSL cert should be wallthereum INC </span>.
+                                            If you don't want to get Phished or get your fund stolen Please take this double check seriously before entering your private key.
+                                        </p>
+                                        <a class="font-italic" rel="noopener noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/Phishing"> what is phishing ?</a>
+                                    </div>
                                     <div class="input-group container mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text text-success">Private Key</span>
                                         </div>
                                         <textarea class="form-control text-center" aria-label="private kye" placeholder="Pate your private key here" v-model="privateKey"></textarea>
                                     </div>
-                                    <rounded-button-lg @click.native="privateKeyUnlock" :disabled="!privateKey" class="text-white deactive text-center" :text="'UNLOCK WALLET'" style="width:100%; background: linear-gradient(60deg,#ab47bc,#7b1fa2)"></rounded-button-lg>
+                                    <button class="btn btn-success btn-change deactive text-center" style="width:100%; background: linear-gradient(60deg,#ab47bc,#7b1fa2)" @click.native="privateKeyUnlock" :disabled=!privateKey> UNLOCK WALLET </button>
+                                    <!-- <rounded-button-lg @click.native="privateKeyUnlock" :disabled="!privateKey" class="text-white deactive text-center" :text="'UNLOCK WALLET'" style="width:100%; background: linear-gradient(60deg,#ab47bc,#7b1fa2)"></rounded-button-lg> -->
                                 </div>
                                 <div class="tab-pane" id="keystore">
-                                    <p> I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
+                                    <div class="mb-3"> 
+                                        <h6 class="h6 p-3 bg-light shadow-sm text-center text-success card card-block italic">An Ethereum keystore file is an encrypted version of your unique Ethereum private key that you will use to sign your transactions.</h6>
+                                        <h5 class="h5 text-danger mb-3 font-weight-bold font-italic"> * WARNING *</h5> 
+                                        <p class="text-justify"> Before entering your keystore and password please double check the site address and SSL certificate, it should say <a class="text-danger font-italic" href="https://wallthereum.com"> https://wallthereum.com  </a> and <span class="font-italic text-danger"> SSL cert should be wallthereum INC </span>.
+                                            If you don't want to get Phished or get your fund stolen Please take this double check seriously before entering your private key.
+                                        </p>
+                                        <a class="font-italic" rel="noopener noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/Phishing"> what is phishing ?</a>
+                                    </div>
                                     <div class="custom-file my-3">
                                         <input @change="onKeyStoreChange" type="file" class="custom-file-input" id="customFile">
                                         <label v-if="file" class="custom-file-label" for="customFile">{{file.name}}</label>
@@ -60,11 +71,20 @@
                                     <div class="mb-3">
                                         <input type="password" v-model="password" id="inputPassword5" placeholder="Enter your password" class="form-control" aria-describedby="passwordHelpBlock">
                                     </div>
-
-                                    <rounded-button-lg @click.native="keyStoreUnlock" :disabled="!file" class="text-white deactive text-center" :text="'UNLOCK WALLET'" style="width:100%; background: linear-gradient(60deg,#ab47bc,#7b1fa2)"></rounded-button-lg>
+                                    <button class="btn btn-success btn-change deactive text-center" style="width:100%; background: linear-gradient(60deg,#ab47bc,#7b1fa2)" @click="keyStoreUnlock" :disabled=!file> UNLOCK WALLET </button>
+                                    <!-- <rounded-button-lg @click.native="keyStoreUnlock" :disabled="!file" class="text-white deactive text-center" :text="'UNLOCK WALLET'" style="width:100%; background: linear-gradient(60deg,#ab47bc,#7b1fa2)"></rounded-button-lg> -->
                                 </div>
-                                <div class="tab-pane" id="settings">
-                                    <p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
+                                <div class="tab-pane" id="metamask">
+                                    <a href="https://metamask.io/" rel="noopener noreferrer" target="_blank">
+                                        <div ref="metamask"></div>
+                                    </a>
+                                    <p> 
+                                        MetaMask is a bridge that allows you to visit the distributed web of tomorrow in your browser today. It allows you to run Ethereum dApps right in your browser without running a full Ethereum node.
+
+                                        MetaMask includes a secure identity vault, providing a user interface to manage your identities on different sites and sign blockchain transactions.
+                                    </p>
+                                    <br>
+                                    <h5 class="alert h5 text-danger"><b> We will support MetaMask real soon ... </b></h5>
                                 </div>
                             </div>
                         </div></div>
@@ -82,16 +102,41 @@
 <script>
 import RoundedButtonLg from '@/components/RoundedButtonLg';
 var secp256k1 = require('secp256k1');
-
+var ModelViewer = require('metamask-logo');
 export default {
     data: () => ({
         password: null,
         privateKey: null,
-        file: null
+        file: null,
     }),
     components: {
         RoundedButtonLg
     },
+
+    mounted: function(){
+
+        // initializing and appending the MetaMask Logo to its Div
+        let metaMaskViewer = ModelViewer({
+            pxNotRatio: true,
+            width: 500,
+            height: 400,
+            follwoMouse: true,
+            followMotion: true,
+            // slowDrift: false
+        });
+        // console.log(this.$refs.metamask);
+        this.$refs.metamask.appendChild(metaMaskViewer.container);
+        metaMaskViewer.lookAt({
+            x:100,
+            y:100
+        });
+        // enable mouse follow
+        // metaMaskViewer.setFollowMouse(true)
+
+        // deallocate nicely
+        // metaMaskViewer.stopAnimation()
+    },
+
     methods: {
         privateKeyUnlock: function(){
             // this.$router.push({name: 'dashboard'});
@@ -248,6 +293,15 @@ div.card .card-header-danger {
 
 .nav .nav-item {
     position: relative;
+}
+
+
+.btn-change{
+    -webkit-transition: all 0.5s ease-in-out;
+}
+.btn-change:hover:enabled{
+    -webkit-transform: scale(1.05);
+    background: #31708f;
 }
 </style>
 

@@ -13,10 +13,10 @@
                                     <a class="nav-link active" href="#home" data-toggle="tab">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#updates" data-toggle="tab">Charts</a>
+                                    <a class="nav-link" href="#updates" data-toggle="tab">Buy Ether</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#history" data-toggle="tab">Transactions History</a>
+                                    <a class="nav-link" href="#contracts" data-toggle="tab">Contracts</a>
                                </li>
                             </ul>
                         </div>
@@ -132,13 +132,13 @@
 
 
 
-                        <div class="tab-pane" id="updates">
-                            <p> salam </p>
+                        <div class="tab-pane"  id="updates">
+                            <img src="https://mainefamilyplanning.org/wp-content/uploads/2018/04/Coming-Soon-PNG.png" alt="coming soon" class="center">
                         </div>
 
 
-                        <div class="tab-pane" id="history">
-                            <p> I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
+                        <div class="tab-pane" id="contracts">
+                            <img src="https://mainefamilyplanning.org/wp-content/uploads/2018/04/Coming-Soon-PNG.png" alt="coming soon" class="center">
                         </div>
                     </div>
                 </div></div>
@@ -261,13 +261,15 @@ import RoundedButtonLg from '@/components/RoundedButtonLg';
 import EthereumTx from 'ethereumjs-tx';
 import NetworkManager from '@/NetworkManager';
 import ReadMoreModal from '@/components/ReadMoreModal';
+import TransactionsHistory from '@/components/TransactionsHistory'
 
 var Web3 = require('web3');
 // var Ethers = require('ethers');``
 export default {
     components: {
         RoundedButtonLg,
-        ReadMoreModal
+        ReadMoreModal,
+        TransactionsHistory
     },
     data(){
         return {
