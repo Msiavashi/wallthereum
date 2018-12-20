@@ -12,7 +12,7 @@
                         </div>
                     </div>
                 <div class="align-content-center container-fluid text-center" style="z-index:2">
-                    <button type="button" class="btn-change text-white btn btn-round-lg btn-lg shadow" style="background: rgb(91,50,180)">getting started</button>
+                    <button type="button" @click="onGettingStartedClicked()" class="btn-change text-white btn btn-round-lg btn-lg shadow" style="background: rgb(91,50,180)">getting started</button>
                     <span class="mx-1"></span>
                     <button @click="changeRoute('dashboard')" type="button" class="btn-change text-white btn btn-round-lg btn-lg align-self-center shadow" style="background: rgb(86,158,148)">&nbsp&nbsp&nbsp&nbsp already have a wallet? &nbsp&nbsp&nbsp&nbsp</button>
                 </div>
@@ -90,7 +90,7 @@
                 <!-- feature boxes -->
 
                 <!-- user guideline -->
-                <div>
+                <div id="guideline">
                     <user-guide></user-guide>
                 </div>
                 <!-- end of user guideline -->
@@ -308,6 +308,13 @@ export default {
     },
 
     methods: {
+
+        onGettingStartedClicked: function(){
+            $('html,body').animate({
+                    scrollTop: $("#guideline").offset().top},
+                    'slow');
+        },
+
         changeRoute: function(routeName) {
             return this.$router.push({name: routeName});
         },
