@@ -39,12 +39,12 @@
                 <div class="d-flex row flex-wrap my-5 justify-content-center">
                     <div class="col-lg-4 col-md-4 col-xs-4 d-flex row justify-content-center">
                         <div class="d-flex row justify-content-center px-3">
-                            <div class="hexagon security-hexagon d-flex row justify-content-center">
+                            <div class="hexagon security-hexagon d-flex row justify-content-center grow">
                                 <div class="hexTop"></div>
                                 <div class="hexBottom"></div>
                             </div>
                             <div class="container text-center">
-                                <h5 class="headline h5 py-3"> Client Side </h5>
+                                <h5 class="headline h5 py-3"> Secure </h5>
                             </div>
                             <div class="container text-center text-wrap">
                                 <p class="h6 text-black-50"> everything happens in your browser. we store or send nothing to our servers.</p>
@@ -55,15 +55,15 @@
                     <div class="col-lg-4 col-md-4 col-xs-4 d-flex row justify-content-center">
                         
                         <div class="d-flex row justify-content-center px-3">
-                            <div class="hexagon dashboard-hexagon">
+                            <div class="hexagon dashboard-hexagon grow">
                                 <div class="hexTop"></div>
                                 <div class="hexBottom"></div>
                             </div>
                             <div class="container text-center">
-                                <h5 class="headline h5 py-3"> Dashboard </h5>
+                                <h5 class="headline h5 py-3"> Wallet Panel </h5>
                             </div>
                             <div class="container text-center text-wrap">
-                                <p class="h6 text-black-50"> A beafutiful Dashboard to monitor and control your deposit and transactions  </p>
+                                <p class="h6 text-black-50"> A user friendly Dashboard to monitor and control your deposit and transactions  </p>
                             </div>
                         </div>
 
@@ -71,13 +71,13 @@
 
                     <div class="col-lg-4 col-md-4 col-xs-4 d-flex row justify-content-center">
                         <div class="d-flex row justify-content-center px-3">
-                            <div class="hexagon mobile-hexagon">
+                            <div class="hexagon mobile-hexagon grow">
                                 <div class="hexTop"></div>
                                 <div class="hexBottom"></div>
                             </div>
 
                             <div class="container text-center">
-                                <h5 class="headline h5 py-3"> Mobile Application </h5>
+                                <h5 class="headline h5 pt-3"> Mobile Application </h5><p class="text-success">(Coming Soon)</p>
                             </div>
                             <div class="container text-center text-wrap">
                                 <p class="h6 text-black-50"> You can think of Wallthereum Android as a completely secure, hermetic environment, which uses hybrid encryption on top of Android’s own keystore to provide maximum security on the inside. </p>
@@ -95,11 +95,13 @@
                 </div>
                 <!-- end of user guideline -->
 
+                <!-- team memebrs -->
+                <div id="team" class="mt-5">
+                    <team-members></team-members>
+                </div>
+                <!-- end of team members -->
             </div>
 
-            <div>
-
-            </div>
         </div>
 
 
@@ -153,15 +155,13 @@
     }
 }
 
-
-.btn-change{
-    -webkit-transition: all 0.5s ease-in-out;
-}
-.btn-change:hover{
-    -webkit-transform: scale(1.1);
-    background: #31708f;
+.grow {
+    transition: all .2s ease-in-out;
 }
 
+.grow:hover {
+    transform: scale(1.1);
+}
 
 .btn-round-lg{
 border-radius: 22.5px;
@@ -178,6 +178,14 @@ padding-left: 10px;
 padding-right: 10px;
 }
 
+
+.btn-change{
+    -webkit-transition: all 0.5s ease-in-out;
+}
+.btn-change:hover:enabled{
+    -webkit-transform: scale(1.1);
+    background: #31708f;
+}
 
 .wave {
     position: relative;
@@ -202,17 +210,17 @@ padding-right: 10px;
 }
 
 .mobile-hexagon {
-  background-image: url(https://www.btcethereum.com/blog/wp-content/uploads/2018/03/29439/abra-mobile-app-adds-20-new-cryptocurrencies-and-stablecoin-technology-1024x1024.jpg);
+  background-image: url(https://cdn-images-1.medium.com/max/2000/1*8jBQZ82dDbA530C8SpUUPg.png);
 }
 
 .security-hexagon {
 
-  background-image: url(https://atozcrypto.org/wp-content/uploads/2018/03/ethcentral.png);
+  background-image: url(https://www.tcfm.co.uk/wp-content/uploads/2017/12/security-padlock-1.jpg);
 }
 
 .dashboard-hexagon {
 
-  background-image: url(https://d85wutc1n854v.cloudfront.net/live/products/600x375/WB0R67929.png?v=1.7.5);
+  background-image: url(https://www.ripplecoinnews.com/wp-content/uploads/2017/09/online-wallet-cryptocurrency.png);
 }
 
 .hexagon {
@@ -287,6 +295,7 @@ padding-right: 10px;
 <script>
 import TutorialModal from '@/components/TutorialModal';
 import UserGuide from '@/components/UserGuide';
+import TeamMembers from '@/components/TeamMembers';
 import {mapState} from 'vuex';
 
 export default {
@@ -304,7 +313,8 @@ export default {
 
     components: {
         TutorialModal,
-        UserGuide
+        UserGuide,
+        TeamMembers
     },
 
     methods: {

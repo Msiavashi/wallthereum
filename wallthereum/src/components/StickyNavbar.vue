@@ -2,7 +2,7 @@
     <header class="header-area overlay">
     <nav class="navbar navbar-expand-md navbar-dark shadow" id="fixed-navbar">
 		<div class="container">
-			<a href="#" class="navbar-brand">wallthereum</a>
+			<router-link to="/" class="navbar-brand">wallthereum</router-link>
 			<button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#main-nav">
 				<span class="menu-icon-bar"></span>
 				<span class="menu-icon-bar"></span>
@@ -14,7 +14,7 @@
           <network-selector class="nav-item nav-link"></network-selector>
 					<li><router-link to="/" class="nav-item nav-link active">Home</router-link></li>
 					<li><router-link to="/wallet" class="nav-item nav-link active">Dashboard</router-link></li>
-					<li><a href="#" class="nav-item nav-link">About Us</a></li>
+					<li><router-link to="/about" class="nav-item nav-link">About</router-link></li>
 					<!-- <li class="dropdown">
 						<a href="#" class="nav-item nav-link" data-toggle="dropdown">Services</a>
 						<div class="dropdown-menu">
@@ -33,7 +33,7 @@
 							<a href="#" class="dropdown-item">Dropdown Item 5</a>
 						</div>
 					</li> -->
-					<li><a href="#" class="nav-item nav-link">Contact</a></li>
+					<!-- <li><a href="#" class="nav-item nav-link">Contact</a></li> -->
 				</ul>
 			</div>
 		</div>

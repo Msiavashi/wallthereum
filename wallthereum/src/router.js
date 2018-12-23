@@ -6,6 +6,7 @@ import store from '@/store'
 import Dashboard from '@/views/Dashboard.vue'
 import MethodSelection from '@/views/MethodSelection.vue'
 import Networks from '@/NetworkManager'
+import About from '@/views/About.vue'
 import VuexPersist from 'vuex-persist';
 
 var Web3 = require('web3');
@@ -32,6 +33,11 @@ const router = new Router({
       path: '/wallet',
       name: 'wallet',
       component: MethodSelection
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About
     }
   ]
 })

@@ -20,7 +20,7 @@
                                 <h3 class="title">Keep Your Wallet Safe</h3>
                                 <p class="description">
                                     Do Not Lose Your Private Key.
-                                    The private key is needed to sign the transactions for transfer function ERC20 standard. losing it means losing your fund.<br>
+                                    The private key is needed to sign the transactions for transfer function ERC20 standard.<br>
                                 </p>
                             </div>
                         </div>
@@ -57,15 +57,6 @@ export default {
 </script>
 
 <style scoped>
-
-
-.btn-change{
-    -webkit-transition: all 0.5s ease-in-out;
-}
-.btn-change:hover:enabled{
-    -webkit-transform: scale(1.5);
-    background: #31708f;
-}
 
 .main-timeline5{overflow:hidden;position:relative}
 .main-timeline5 .timeline{position:relative;margin-top:-79px}
