@@ -4,55 +4,50 @@
 	<section id="footer">
 		<div class="container">
 			<div class="row text-center text-xs-center text-sm-left text-md-left">
-				<div class="col-xs-12 col-sm-4 col-md-4">
-					<h5>Quick links</h5>
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<h5 class="h5"><router-link to="/" class="section-title"> what is wallthereum ?</router-link></h5>
+					<div>
+						<h5> wallthereum is secure, open-source and client-side wallet for ethereum. we are developing the platform real fast to be able to support more features based on blockchain network and provide you easier ways to interact with blockchain with highest degrees of security. out secure mobile application would be the next step and would be available soon.</h5>
+					</div>
 					<ul class="list-unstyled quick-links">
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Videos</a></li>
+						<li><a href="https://www.ethereum.org/"><i class="fa fa-angle-double-right"></i>ethereum project</a></li>
+						<li><a href="https://etherscan.io/"><i class="fa fa-angle-double-right"></i>etherscan</a></li>
+						<li><a href="https://infura.io/"><i class="fa fa-angle-double-right"></i>infura</a></li>
+						<li><a href="https://web3js.readthedocs.io/en/1.0/getting-started.html"><i class="fa fa-angle-double-right"></i>powered by web3</a></li>
 					</ul>
 				</div>
-				<div class="col-xs-12 col-sm-4 col-md-4">
-					<h5>Quick links</h5>
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<h5>Help us Grow</h5>
+					<div>
+						<h5>if you are a developer the walltehreum is open source. so please consider helping the platfom grow with your contribution</h5>
+						<br>
+						<h5>if you are not, please consider sharing the address below everywhere in internet.</h5>
+						<br>
+						<h5>by the way... we always appreciate your donation: <br> ETH (mainnet): 0x30F0f68e47349D14a3dbeb1d7942999168d00B8f</h5>
+
+					</div>
 					<ul class="list-unstyled quick-links">
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Videos</a></li>
-					</ul>
-				</div>
-				<div class="col-xs-12 col-sm-4 col-md-4">
-					<h5>Quick links</h5>
-					<ul class="list-unstyled quick-links">
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-						<li><a href="https://wwwe.sunlimetech.com" title="Design and developed by"><i class="fa fa-angle-double-right"></i>Imprint</a></li>
+						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>support email: support@wallthereum.com</a></li>
+						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>github</a></li>
 					</ul>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
 					<ul class="list-unstyled list-inline social text-center">
-						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-facebook"></i></a></li>
+						<!-- <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-facebook"></i></a></li> -->
 						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-twitter"></i></a></li>
 						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-google-plus"></i></a></li>
+						<!-- <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-google-plus"></i></a></li> -->
 						<li class="list-inline-item"><a href="javascript:void();" target="_blank"><i class="fa fa-envelope"></i></a></li>
 					</ul>
 				</div>
-				</hr>
 			</div>	
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
 					<!-- <p><u><a href="https://www.wallthereum.com/">Wallthereum Corporation</a></u> is a Registered MSP/ISO of Elavon, Inc. Georgia [a wholly owned subsidiary of U.S. Bancorp, Minneapolis, MN]</p> -->
 					<p class="h6" style="color: purple">&copy All right Reversed.<a class="text-green ml-2" href="http://www.wallthereum.com" target="_blank">Wallthereum</a></p>
 				</div>
-				</hr>
 			</div>	
 		</div>
 	</section>
@@ -76,7 +71,7 @@ section {
 section .section-title {
     text-align: center;
     color: #007b5e;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
     text-transform: uppercase;
 }
 #footer {

@@ -51,7 +51,7 @@
                                         </div>
                                         <textarea class="form-control text-center" aria-label="private kye" placeholder="Pate your private key here" v-model="privateKey"></textarea>
                                     </div>
-                                    <button class="btn btn-success btn-change deactive text-center" style="width:100%; background: linear-gradient(60deg,#ab47bc,#7b1fa2)" @click.native="privateKeyUnlock" :disabled=!privateKey> UNLOCK WALLET </button>
+                                    <button class="btn btn-success btn-change deactive text-center" style="width:100%; background: linear-gradient(60deg,#ab47bc,#7b1fa2)" @click="privateKeyUnlock" :disabled=!privateKey> UNLOCK WALLET </button>
                                     <!-- <rounded-button-lg @click.native="privateKeyUnlock" :disabled="!privateKey" class="text-white deactive text-center" :text="'UNLOCK WALLET'" style="width:100%; background: linear-gradient(60deg,#ab47bc,#7b1fa2)"></rounded-button-lg> -->
                                 </div>
                                 <div class="tab-pane" id="keystore">
