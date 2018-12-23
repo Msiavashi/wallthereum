@@ -34,7 +34,7 @@
                             <a target="_blank" rel="noopener noreferrer" :href="''+$store.getters.getWeb3.currentProvider.network.etherscanAddressTx+''+txnHash+''">Transaction Status</a>
                         </p>
                         <hr>
-                        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+                        <!-- <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p> -->
                     </div>
                     <!-- end of transaction success alert -->
                     

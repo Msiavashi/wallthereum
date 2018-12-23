@@ -38,12 +38,12 @@
                             <div class="tab-content text-center">
                                 <div class="tab-pane active" id="profile">
                                     <div class="mb-3"> 
-                                        <h6 class="h6 p-3 bg-light shadow-sm text-center text-success card card-block italic">The format of your private key is 3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe266.</h6>
+                                        <h6 class="h6 p-3 bg-light shadow-sm text-center text-success card card-block font-italic font-weight-bold">The format of your private key is 3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe266.</h6>
                                         <h5 class="h5 text-danger mb-3 font-weight-bold font-italic"> * WARNING *</h5> 
-                                        <p class="text-justify"> Before entering your private key please double check the site address and SSL certificate, it should say <a class="text-danger font-italic" href="https://wallthereum.com"> https://wallthereum.com  </a> and <span class="font-italic text-danger"> SSL cert should be wallthereum INC </span>.
+                                        <p class="text-justify font-italic"> Before entering your private key please double check the site address and SSL certificate, it should say <a class="text-danger font-italic" href="https://wallthereum.com"> https://wallthereum.com  </a> and <span class="font-italic text-danger"> SSL cert should be wallthereum INC </span>.
                                             If you don't want to get Phished or get your fund stolen Please take this double check seriously before entering your private key.
                                         </p>
-                                        <a class="font-italic" rel="noopener noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/Phishing"> what is phishing ?</a>
+                                        <a class="font-italic font-weight-bold" rel="noopener noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/Phishing"> what is phishing ?</a>
                                     </div>
                                     <div class="input-group container mb-3">
                                         <div class="input-group-prepend">
@@ -56,12 +56,12 @@
                                 </div>
                                 <div class="tab-pane" id="keystore">
                                     <div class="mb-3"> 
-                                        <h6 class="h6 p-3 bg-light shadow-sm text-center text-success card card-block italic">An Ethereum keystore file is an encrypted version of your unique Ethereum private key that you will use to sign your transactions.</h6>
+                                        <h6 class="h6 p-3 bg-light shadow-sm text-center text-success card card-block font-weight-bold font-italic">An Ethereum keystore file is an encrypted version of your unique Ethereum private key that you will use to sign your transactions.</h6>
                                         <h5 class="h5 text-danger mb-3 font-weight-bold font-italic"> * WARNING *</h5> 
-                                        <p class="text-justify"> Before entering your keystore and password please double check the site address and SSL certificate, it should say <a class="text-danger font-italic" href="https://wallthereum.com"> https://wallthereum.com  </a> and <span class="font-italic text-danger"> SSL cert should be wallthereum INC </span>.
+                                        <p class="text-justify font-italic"> Before entering your keystore and password please double check the site address and SSL certificate, it should say <a class="text-danger font-italic" href="https://wallthereum.com"> https://wallthereum.com  </a> and <span class="font-italic text-danger"> SSL cert should be wallthereum INC </span>.
                                             If you don't want to get Phished or get your fund stolen Please take this double check seriously before entering your private key.
                                         </p>
-                                        <a class="font-italic" rel="noopener noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/Phishing"> what is phishing ?</a>
+                                        <a class="font-italic font-weight-bold" rel="noopener noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/Phishing"> what is phishing ?</a>
                                     </div>
                                     <div class="custom-file my-3">
                                         <input @change="onKeyStoreChange" type="file" class="custom-file-input" id="customFile">

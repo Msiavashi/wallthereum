@@ -21,7 +21,7 @@
                             <h4 class="h4 text-danger">* Save your Keystore file *</h4>
                           </div>
                           <div class="align-self-md-center" style="margin-top: 10%;">
-                            <button type="button" @click="downloadKeystore" class="btn btn-round-lg btn-lg btn-change text-white bg-success shadow-lg" href="!#"> Download Keystore File </button>
+                            <button type="button" @click="downloadKeystore" class="btn btn-change text-white bg-success shadow-lg"> Download Keystore File </button>
                           </div>
                           <div class="container">
                               <h6 class="h5 mt-5 text-danger"> **Do not lose it!** It cannot be recovered if you lose it. </h6>
@@ -52,7 +52,7 @@
                           </div>
 
                           <div class="align-self-md-center" style="margin-top: 5%; margin-bottom:5%;">
-                            <button type="button" class="btn btn-round-lg btn-lg btn-change text-white bg-info shadow-lg" href="!#"> Print Wallet Information </button>
+                            <button type="button" class="btn btn-change text-white bg-info shadow-lg"> Print Wallet Information </button>
                           </div>
 
                       <!-- private key tab end -->

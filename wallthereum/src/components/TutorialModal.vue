@@ -10,11 +10,13 @@
         </button>
       </div>
       <div class="modal-body">
+        <h6 class="h6 text-red">
         **Do not lose it!** It cannot be recovered if you lose it.
 
         **Do not share it!** Your funds will be stolen if you use this file on a malicious/phishing site.
 
         **Make a backup!** Secure it like the millions of dollars it may one day be worth.
+        </h6>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>

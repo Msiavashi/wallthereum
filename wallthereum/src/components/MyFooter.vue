@@ -5,9 +5,9 @@
 		<div class="container">
 			<div class="row text-center text-xs-center text-sm-left text-md-left">
 				<div class="col-xs-12 col-sm-6 col-md-6">
-					<h5 class="h5"><router-link to="/" class="section-title"> what is wallthereum ?</router-link></h5>
+					<h5 class="h5 font-italic font-weight-bold"> what is wallthereum ?</h5>
 					<div>
-						<h5> wallthereum is secure, open-source and client-side wallet for ethereum. we are developing the platform real fast to be able to support more features based on blockchain network and provide you easier ways to interact with blockchain with highest degrees of security. out secure mobile application would be the next step and would be available soon.</h5>
+						<h6 class="h6 font-italic"> wallthereum is secure, open-source and client-side wallet for ethereum. we are developing the platform real fast to be able to support more features based on blockchain network and provide you easier ways to interact with blockchain with highest degrees of security. out secure mobile application would be the next step and would be available soon.</h6>
 					</div>
 					<ul class="list-unstyled quick-links">
 						<li><a href="https://www.ethereum.org/"><i class="fa fa-angle-double-right"></i>ethereum project</a></li>
@@ -17,18 +17,19 @@
 					</ul>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
-					<h5>Help us Grow</h5>
+					<h5 class="font-italic font-weight-bold">Help us Grow</h5>
 					<div>
-						<h5>if you are a developer the walltehreum is open source. so please consider helping the platfom grow with your contribution</h5>
+						<h6 class="h6 font-italic">if you are a developer the walltehreum is open source. so please consider helping the platfom grow with your contribution
 						<br>
-						<h5>if you are not, please consider sharing the address below everywhere in internet.</h5>
+						if you are not, please consider sharing the address below everywhere in internet.
 						<br>
-						<h5>by the way... we always appreciate your donation: <br> ETH (mainnet): 0x30F0f68e47349D14a3dbeb1d7942999168d00B8f</h5>
+						<br>
+						by the way... we always appreciate your donation: <br> <span class="font-weight-bold"> ETH (mainnet): </span> 0x30F0f68e47349D14a3dbeb1d7942999168d00B8f</h6>
 
 					</div>
 					<ul class="list-unstyled quick-links">
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>support email: support@wallthereum.com</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>github</a></li>
+						<li><a href="javascript:void();"><i class="fa fa-envelope"></i>support email: support@wallthereum.com</a></li>
+						<li><a href="javascript:void();"><i class="fa fa-github"></i>github</a></li>
 					</ul>
 				</div>
 			</div>
@@ -36,6 +37,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
 					<ul class="list-unstyled list-inline social text-center">
 						<!-- <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-facebook"></i></a></li> -->
+						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-github"></i></a></li>
 						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-twitter"></i></a></li>
 						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-instagram"></i></a></li>
 						<!-- <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-google-plus"></i></a></li> -->
@@ -64,6 +66,16 @@ export default {
 <style scoped>
 /* Footer */
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+
+.grow {
+    transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+    transform: scale(1.1);
+}
+
 section {
     padding: 60px 0;
 }
@@ -99,9 +111,9 @@ section .section-title {
 #footer ul.social li a i {
     margin-right: 5px;
 	font-size:25px;
-	-webkit-transition: .5s all ease;
-	-moz-transition: .5s all ease;
-	transition: .5s all ease;
+	-webkit-transition: .2s all ease;
+	-moz-transition: .2s all ease;
+	transition: .2s all ease;
 }
 #footer ul.social li:hover a i {
 	font-size:30px;
@@ -116,9 +128,9 @@ section .section-title {
 }
 #footer ul.quick-links li{
 	padding: 3px 0;
-	-webkit-transition: .5s all ease;
-	-moz-transition: .5s all ease;
-	transition: .5s all ease;
+	-webkit-transition: .2s all ease;
+	-moz-transition: .2s all ease;
+	transition: .2s all ease;
 }
 #footer ul.quick-links li:hover{
 	padding: 3px 0;
