@@ -1,12 +1,12 @@
 <template>
 
-    <div class="d-flex align-content-center justify-content-center" id="background-container" style="background-color: rgb(245, 245, 245)">
+    <div class="d-flex align-content-center justify-content-center" id="background-container" style="background-color: #EDFAFD">
         <div class="container d-flex row">
         <div class="container" id="background-container">
             <div class="row">
                 <div>
                     <!-- Tabs with icons on Card -->
-                    <div class="card card-nav-tabs shadow">
+                    <div class="card card-nav-tabs shadow-lg">
                         <div class="card-header card-header-primary">
                             <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
                             <div class="nav-tabs-navigation">
@@ -38,7 +38,7 @@
                             <div class="tab-content text-center">
                                 <div class="tab-pane active" id="profile">
                                     <div class="mb-3"> 
-                                        <h6 class="h6 p-3 bg-light shadow-sm text-center text-success card card-block font-italic font-weight-bold">The format of your private key is 3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe266.</h6>
+                                        <h6 class="h6 p-3 bg-light shadow-sm text-center text-success card card-block font-weight-bold font-italic">The format of your private key is 3a1076bf45ab87712ad64ccb3b10217737f7faacbf2872e88fdd9a537d8fe266.</h6>
                                         <h5 class="h5 text-danger mb-3 font-weight-bold font-italic"> * WARNING *</h5> 
                                         <p class="text-justify font-italic"> Before entering your private key please double check the site address and SSL certificate, it should say <a class="text-danger font-italic" href="https://wallthereum.com"> https://wallthereum.com  </a> and <span class="font-italic text-danger"> SSL cert should be wallthereum INC </span>.
                                             If you don't want to get Phished or get your fund stolen Please take this double check seriously before entering your private key.
@@ -51,7 +51,7 @@
                                         </div>
                                         <textarea class="form-control text-center" aria-label="private kye" placeholder="Pate your private key here" v-model="privateKey"></textarea>
                                     </div>
-                                    <button class="btn btn-success btn-change deactive text-center" style="width:100%; background: linear-gradient(60deg,#ab47bc,#7b1fa2)" @click="privateKeyUnlock" :disabled=!privateKey> UNLOCK WALLET </button>
+                                    <button class="btn btn-success btn-change deactive text-center" style="width:100%;" @click="privateKeyUnlock" :disabled=!privateKey> UNLOCK WALLET </button>
                                     <!-- <rounded-button-lg @click.native="privateKeyUnlock" :disabled="!privateKey" class="text-white deactive text-center" :text="'UNLOCK WALLET'" style="width:100%; background: linear-gradient(60deg,#ab47bc,#7b1fa2)"></rounded-button-lg> -->
                                 </div>
                                 <div class="tab-pane" id="keystore">
@@ -71,7 +71,7 @@
                                     <div class="mb-3">
                                         <input type="password" v-model="password" id="inputPassword5" placeholder="Enter your password" class="form-control" aria-describedby="passwordHelpBlock">
                                     </div>
-                                    <button class="btn btn-success btn-change deactive text-center" style="width:100%; background: linear-gradient(60deg,#ab47bc,#7b1fa2)" @click="keyStoreUnlock" :disabled=!file> UNLOCK WALLET </button>
+                                    <button class="btn btn-success btn-change deactive text-center" style="width:100%;" @click="keyStoreUnlock" :disabled=!file> UNLOCK WALLET </button>
                                     <!-- <rounded-button-lg @click.native="keyStoreUnlock" :disabled="!file" class="text-white deactive text-center" :text="'UNLOCK WALLET'" style="width:100%; background: linear-gradient(60deg,#ab47bc,#7b1fa2)"></rounded-button-lg> -->
                                 </div>
                                 <div class="tab-pane" id="metamask">
@@ -152,11 +152,12 @@ export default {
             const reader = new FileReader();
             let self = this;
             reader.onload = function() {
-                self.$store.wallet = self.$store.getters.getWeb3.eth.accounts.decrypt(reader.result.toLowerCase(), self.password);
-                if (self.$store.wallet){
+                try {
+                    self.$store.wallet = self.$store.getters.getWeb3.eth.accounts.decrypt(reader.result.toLowerCase(), self.password);
                     self.$router.push({name: 'dashboard'});
+                } catch (error) {
+                    alert(error.message);
                 }
-                console.log(self.$store.wallet);
             }
             reader.readAsText(this.file);
         },
@@ -166,10 +167,14 @@ export default {
         },
 
         isValidPrivateKey: function(){
+            let privateKey = null;
             try {
-                return secp256k1.privateKeyVerify(new Buffer(this.privateKey, 'hex'));
+                if(this.privateKey.startsWith("0x")){
+                    privateKey = this.privateKey.slice(2);
+                }
+                return secp256k1.privateKeyVerify(new Buffer(privateKey, 'hex'));
             } catch (error) {
-                return false;
+                console.error(error);
             }
         }
     }
@@ -222,8 +227,8 @@ div.card .card-header {
 }
 
 div.card .card-header-primary {
-    background: linear-gradient(60deg,#ab47bc,#7b1fa2);
-    box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px rgba(156,39,176,.6);
+    background: #135589;
+    box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px #135589;
 }
 
 div.card .card-header-danger {
@@ -301,7 +306,7 @@ div.card .card-header-danger {
 }
 .btn-change:hover:enabled{
     -webkit-transform: scale(1.05);
-    background: #31708f;
+    /* background: #31708f; */
 }
 </style>
 

@@ -1,5 +1,5 @@
 <template>
-<div class="" style="padding-top: 100px; padding-bottom: 50px; background-color: rgb(245, 245, 245);">
+<div class="" style="padding-top: 100px; padding-bottom: 50px; background-color: #EDFAFD;">
     <div class="container shadow-lg mt-5 rounded" id="tabs-container">
         <div class="d-flex row">
             <div class="col-md-12 text-center ">
@@ -77,7 +77,7 @@ Simply place a div with the Bootstrap container class around the navbar. This wi
 .nav-tabs .nav-link.active {
     font-weight:bold;
     background-color: transparent;
-    border-bottom:3px solid purple;
+    border-bottom:3px solid #135589;
     border-right: none;
     border-left: none;
     border-top: none;
@@ -110,7 +110,7 @@ padding-right: 10px;
 }
 
 #tabs-container{
-  border-top: 5px solid purple;
+  border-top: 5px solid #135589;
   background-color: white;
 }
 

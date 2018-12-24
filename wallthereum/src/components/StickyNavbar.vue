@@ -1,6 +1,6 @@
 <template>
     <header class="header-area overlay">
-    <nav class="navbar navbar-expand-md navbar-dark shadow" id="fixed-navbar">
+    <nav class="navbar navbar-expand-md navbar-dark" id="fixed-navbar">
 		<div class="container">
 			<router-link to="/" class="navbar-brand">wallthereum</router-link>
 			<button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#main-nav">
@@ -188,14 +188,9 @@
 }
 .navbar.fixed-top {
   position: fixed;
-  -webkit-animation: navbar-animation 0.6s;
-  animation: navbar-animation 0.6s;
-
-  background: rgb(243, 18, 243);  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #15f08a, #e82ce8);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #15f08a, #e82ce8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
+  -webkit-animation: navbar-animation 0.3s;
+  animation: navbar-animation 0.3s;
+  background: #2A93D5;
 }
 .navbar.fixed-top.navbar-dark .navbar-nav .nav-link.active {
   color: #ffffff;
@@ -210,10 +205,7 @@
   padding: 120px 0;
 }
 #fixed-navbar {
-  
-  background: rgb(243, 18, 243);  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #15f08a, #e82ce8);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #15f08a, #e82ce8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #2A93D5;
 }
 @media screen and (max-width: 768px) {
   .navbar-brand {
@@ -221,9 +213,7 @@
   }
   .navbar-nav {
     padding: 0 20px;
-  background: rgb(243, 18, 243);  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #15f08a, #e82ce8);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #15f08a, #e82ce8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #135589;
   }
   .navbar.fixed-top .navbar-nav {
   }

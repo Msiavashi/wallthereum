@@ -1,5 +1,5 @@
 <template>
-<div class="aboutus-section mt-5" >
+<div class="aboutus-section mt-5" style="background-color: #EDFAFD" >
         <div class="container">
             <div class="row">
                 <div class="col-md-9 col-sm-9 col-xs-12">
@@ -8,14 +8,14 @@
                         <p class="aboutus-text">Wallthereum is an open-source web application, free software that has been designed to be secure as your ethereum private wallet. we designed wallthereum in a way that everything happens just in your browser, no data would be send to any server but blockchain network so you can reliably unlock your wallet for transactions.</p>
                         <p class="aboutus-text">Wallet is just the beginning. As we first started wallthereum with security in mind, we planed to develope a much complex trading ecosystem with support for web & mobile devices.</p>
                         <p class="aboutus-text">Have that in mind, we appreciate any contribution to make the system grow to be a leading secure platform for cryptocurrencies. Let's Join Us.</p>
-                        <a class="aboutus-more" href="mailto:mohammad.siav@hotmail.com"> email us</a>
+                        <a class="grow aboutus-more" href="mailto:mohammad.siav@hotmail.com"> email us</a>
                         <span class="mx-2"></span>
-                        <a class="aboutus-more" href="https://github.com/Msiavashi/wallthereum" target="_blank" rel="noopener noreferrer" > github</a>
+                        <a class="grow aboutus-more" href="https://github.com/Msiavashi/wallthereum" target="_blank" rel="noopener noreferrer" > github</a>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12 text-center">
                     <div class="aboutus-banner">
-                        <img src="https://cointelegraph.com/storage/uploads/view/2df0c3fb5c16e347a66c066526987545.jpg" style="min-width: 100%; min-height: 100%" class="img-fluid" alt="ethereum">
+                        <img src="https://www.ethereum.org/images/logos/ETHEREUM-LOGO_PORTRAIT_Black_small.png" style="min-width: 100%; min-height: 100%" class="img-fluid" alt="ethereum">
                     </div>
                 </div>
             </div>
@@ -33,6 +33,14 @@ export default {
 
 <style scoped>
 
+.grow {
+    transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+    transform: scale(1.1);
+}
+
 .aboutus-section {
     padding: 90px 0;
 }
@@ -47,7 +55,7 @@ export default {
     color: #000;
 }
 .aboutus-title::after {
-    background: #fdb801 none repeat scroll 0 0;
+    background: #135589 none repeat scroll 0 0;
     bottom: 0;
     content: "";
     height: 2px;
@@ -63,14 +71,14 @@ export default {
 }
 
 a:hover, a:active {
-    color: #ffb901;
+    color: #135589;
     text-decoration: none;
     outline: 0;
 }
 .aboutus-more {
-    border: 1px solid #fdb801;
+    border: 1px solid #135589;
     border-radius: 25px;
-    color: #fdb801;
+    color: #135589;
     display: inline-block;
     font-size: 14px;
     font-weight: 700;

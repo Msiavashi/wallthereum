@@ -10,17 +10,17 @@
         </button>
       </div>
       <div class="modal-body">
-        <h6 class="h6 text-red">
+        <h6 class="h6 text-center text-danger font-weight-bold">
         **Do not lose it!** It cannot be recovered if you lose it.
-
+        <br><br>
         **Do not share it!** Your funds will be stolen if you use this file on a malicious/phishing site.
-
+        <br><br>
         **Make a backup!** Secure it like the millions of dollars it may one day be worth.
         </h6>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" @click="onAcceptClicked">Accept</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Dismiss</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" @click="onAcceptClicked">Accept</button>
       </div>
     </div>
   </div>

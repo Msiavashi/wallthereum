@@ -7,7 +7,8 @@
                     <div class="input-group mb-3" id="password-group">
                         <input type="password" @keyup.enter="createWallet" v-model="$store.password" class="form-control shadow" placeholder="Enter a password" aria-label="password" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button data-toggle="modal" data-target="#tutorial" id="create" class="btn btn-outline-secondary bg-secondary shadow text-white  border" type="button">Create Wallet</button>
+                            <!-- <button data-toggle="modal" data-target="#tutorial" id="create" class="btn bg-success text-white shadow border" type="button">Create Wallet</button> -->
+                            <button @click="createWallet" id="create" class="btn bg-success text-white shadow border" type="button">Create Wallet</button>
                         </div>
                         </div>
                     </div>
@@ -192,10 +193,7 @@ padding-right: 10px;
     width: 100%;
     height: 100vh;
     background-image:  url("http://majesticengineering.com.my/wp-content/uploads/2016/01/background-1.jpg");
-
-  background: rgb(243, 18, 243);  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #15f08a, #e82ce8);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #15f08a, #e82ce8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #2A93D5;
 
 }
 
@@ -329,8 +327,11 @@ export default {
             return this.$router.push({name: routeName});
         },
         createWallet: function(){
-            console.log(this.$store.state.web3);
-            console.log("salam");
+            if (this.$store.password != null && this.$store.password != ''){
+                $('#tutorial').modal('show');
+            }else{
+                alert("no password provided");
+            }
         }
     }
 }

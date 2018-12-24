@@ -1,5 +1,5 @@
 <template>
-<div class="" id="background-container" style="background: rgb(245, 245, 245); padding-top: 80px;">
+<div class="" id="background-container" style="background: #EDFAFD; padding-top: 80px;">
     <div class="" style="width: 100%; height: 100%">
         <div>
             <!-- Tabs on Plain Card -->
@@ -21,7 +21,8 @@
                             </ul>
                         </div>
                     </div>
-                </div><div class="card-body">
+                </div>
+                <div class="card-body mb-0 pb-0">
                 
                 <div class="container" v-show="txnAlert" id="txnAlert">
                     <!-- start of transaction success alert -->
@@ -51,7 +52,7 @@
                 </div>
 
 
-                    <div class="tab-content text-center">
+                    <div class="tab-content mb-5 text-center">
                         <div class="tab-pane active" id="home">
                             <div class="row">
                                 <div class="col-sm-4">
@@ -122,7 +123,8 @@
                                         <input type="text" class="form-control" v-model="transferGasLimit" placeholder="Gas limit" aria-label="gas-limit" aria-describedby="basic-addon1">
                                     </div>
                                     <!-- <rounded-button-lg data-modal="modal" data-target="#confirmationModal" style="width: 100%" class="btn-success mb-3" v-bind:text="'Send Transaction'"></rounded-button-lg> -->
-                                    <button type="button" @click="onConfirmClicked()" class="mb-3 btn btn-primary" data-toggle="modal" style="width: 100%" data-target="#transactionConfirmationModal">
+                                    <!-- <button type="button" @click="onConfirmClicked()" class="mb-3 btn btn-primary" data-toggle="modal" style="width: 100%" data-target="#transactionConfirmationModal"> -->
+                                    <button type="button" @click="onConfirmClicked()" class="mb-3 btn btn-primary" style="width: 100%" :disabled="!((receiverAddress != '') && (transferAmount != '') && (transferGasLimit != ''))">
                                         Send Transaction
                                     </button>
 
@@ -133,12 +135,12 @@
 
 
                         <div class="tab-pane"  id="updates">
-                            <img src="https://mainefamilyplanning.org/wp-content/uploads/2018/04/Coming-Soon-PNG.png" alt="coming soon" class="center">
+                            <img src="https://mainefamilyplanning.org/wp-content/uploads/2018/04/Coming-Soon-PNG.png" alt="coming soon" class="center img-fluid">
                         </div>
 
 
                         <div class="tab-pane" id="contracts">
-                            <img src="https://mainefamilyplanning.org/wp-content/uploads/2018/04/Coming-Soon-PNG.png" alt="coming soon" class="center">
+                            <img src="https://mainefamilyplanning.org/wp-content/uploads/2018/04/Coming-Soon-PNG.png" alt="coming soon" class="center img-fluid">
                         </div>
                     </div>
                 </div></div>
@@ -239,8 +241,8 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Abort</button>
-                <button type="button" class="btn btn-primary" @click="sendTransaction()">Send</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Abort</button>
+                <button type="button" class="btn btn-success" @click="sendTransaction()">Send</button>
             </div>
             </div>
         </div>
@@ -283,8 +285,8 @@ export default {
             balance: null,
             gasPrice: null,
             networkStatus: "CONNECTED",
-            receiverAddress: null,
-            transferAmount: null,
+            receiverAddress: '',
+            transferAmount: '',
             transferGasLimit: 21000,
             txnFee: null,
             txnHash: null
@@ -338,21 +340,34 @@ export default {
         },
 
         onConfirmClicked: function(){
-            const rawTxn = this.getRawTransaction();
-            let self = this;
 
-            // calculate txn fee
-            const txnFeeWei = this.$store.state.web3.utils.toWei(this.gasPrice, "Gwei") * this.transferGasLimit;
-            this.txnFee = this.$store.state.web3.utils.fromWei(this.$store.state.web3.utils.toBN(txnFeeWei.toString()), 'ether');
-            console.log(this.txnFee);
+            try {
 
-            this.$store.wallet.signTransaction(rawTxn)
-                .then(signedTx => {
-                    self.signedTransaction = signedTx;
-                    self.rawTransaction = rawTxn;
-                }).catch(err => {
-                    console.error(err);
-                })
+                this.$parent.$refs.loading.isLoading = true;
+                const rawTxn = this.getRawTransaction();
+                let self = this;
+
+                // calculate txn fee
+                const txnFeeWei = this.$store.state.web3.utils.toWei(this.gasPrice, "Gwei") * this.transferGasLimit;
+                this.txnFee = this.$store.state.web3.utils.fromWei(this.$store.state.web3.utils.toBN(txnFeeWei.toString()), 'ether');
+                console.log(this.txnFee);
+
+                this.$store.wallet.signTransaction(rawTxn)
+                    .then(signedTx => {
+                        self.signedTransaction = signedTx;
+                        self.rawTransaction = rawTxn;
+                        this.$parent.$refs.loading.isLoading = false;
+                        $("#transactionConfirmationModal").modal('show');
+                    }).catch(err => {
+                        this.$parent.$refs.loading.isLoading = false;
+                        console.error(err);
+                    })
+                    
+            } catch (error) {
+                this.$parent.$refs.loading.isLoading = false;
+                alert(error.message);
+            }
+
         },
 
         sendTransaction: function(){
@@ -507,8 +522,8 @@ div.card .card-header {
 }
 
 div.card .card-header-primary {
-    background: linear-gradient(60deg,#ab47bc,#7b1fa2);
-    box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px rgba(156,39,176,.6);
+    background: #135589;
+    box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px #135589;
 }
 
 div.card .card-header-danger {
