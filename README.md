@@ -2,7 +2,7 @@
 Secure Standalone Ethereum Wallet.
 
 # Overview
-Wallthereum is an open-souce responsive web application designed to be secure as a wallet. everything happens right from your browser, so there is no need to third party servers to store any data.
+Wallthereum is an open-souce responsive web application designed to be highly secure. everything happens right from your browser, so there is no need to third party servers to store any data.
 you may simply clone and run it directly from you computer
 
 # Setup guide
