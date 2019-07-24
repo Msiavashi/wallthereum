@@ -5,7 +5,7 @@
 		<div class="container">
 			<div class="row text-center text-xs-center text-sm-left text-md-left">
 				<div class="col-xs-12 col-sm-6 col-md-6">
-					<h5 class="h5 font-italic font-weight-bold"> what is wallthereum ?</h5>
+					<h5 class="h5 font-italic font-weight-bold"> What is Wallthereum?</h5>
 					<div>
 						<h6 class="h6 font-italic"> wallthereum is secure, open-source and client-side wallet for ethereum. we are developing the platform real fast to be able to support more features based on blockchain network and provide you easier ways to interact with blockchain with highest degrees of security. out secure mobile application would be the next step and would be available soon.</h6>
 					</div>

@@ -1,9 +1,6 @@
 <template>
-
     <div class="d-flex align-content-center justify-content-center" id="background-container" style="background-color: #EDFAFD">
-        <div class="container d-flex row">
         <div class="container" id="background-container">
-            <div class="row">
                 <div>
                     <!-- Tabs with icons on Card -->
                     <div class="card card-nav-tabs shadow-lg">
@@ -51,8 +48,7 @@
                                         </div>
                                         <textarea class="form-control text-center" aria-label="private kye" placeholder="Pate your private key here" v-model="privateKey"></textarea>
                                     </div>
-                                    <button class="btn btn-success btn-change deactive text-center" style="width:100%;" @click="privateKeyUnlock" :disabled=!privateKey> UNLOCK WALLET </button>
-                                    <!-- <rounded-button-lg @click.native="privateKeyUnlock" :disabled="!privateKey" class="text-white deactive text-center" :text="'UNLOCK WALLET'" style="width:100%; background: linear-gradient(60deg,#ab47bc,#7b1fa2)"></rounded-button-lg> -->
+                                    <button class="btn btn-success btn-change deactive text-center" style="width:100%" @click="privateKeyUnlock" :disabled=!privateKey> UNLOCK WALLET </button>
                                 </div>
                                 <div class="tab-pane" id="keystore">
                                     <div class="mb-3"> 
@@ -72,7 +68,6 @@
                                         <input type="password" v-model="password" id="inputPassword5" placeholder="Enter your password" class="form-control" aria-describedby="passwordHelpBlock">
                                     </div>
                                     <button class="btn btn-success btn-change deactive text-center" style="width:100%;" @click="keyStoreUnlock" :disabled=!file> UNLOCK WALLET </button>
-                                    <!-- <rounded-button-lg @click.native="keyStoreUnlock" :disabled="!file" class="text-white deactive text-center" :text="'UNLOCK WALLET'" style="width:100%; background: linear-gradient(60deg,#ab47bc,#7b1fa2)"></rounded-button-lg> -->
                                 </div>
                                 <div class="tab-pane" id="metamask">
                                     <a href="https://metamask.io/" rel="noopener noreferrer" target="_blank">
@@ -89,18 +84,12 @@
                             </div>
                         </div></div>
                     <!-- End Tabs with icons on Card -->
-        
                 </div>
                 </div>
             </div>
-        </div>
-
-        </div>
-
 </template>
 
 <script>
-import RoundedButtonLg from '@/components/RoundedButtonLg';
 var secp256k1 = require('secp256k1');
 var ModelViewer = require('metamask-logo');
 export default {
@@ -109,17 +98,14 @@ export default {
         privateKey: null,
         file: null,
     }),
-    components: {
-        RoundedButtonLg
-    },
 
     mounted: function(){
 
         // initializing and appending the MetaMask Logo to its Div
         let metaMaskViewer = ModelViewer({
             pxNotRatio: true,
-            width: 500,
-            height: 400,
+            // width: 50,
+            // height: 400,
             follwoMouse: true,
             followMotion: true,
             // slowDrift: false
@@ -187,9 +173,6 @@ export default {
     /* min-height: 100vh; */
     padding-top: 50px;
 }
-
-
-
 
 
 div.card {
