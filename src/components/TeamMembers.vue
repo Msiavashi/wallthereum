@@ -9,48 +9,70 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6 col-sm-6">
+            <div class="col-md-4 col-sm-4">
                 <div class="team-member">
                     <div class="team-img">
-                        <img src="https://image.freepik.com/free-photo/man-standing-with-a-black-t-shirt_1187-1045.jpg" alt="team member" class="img-fluid">
+                        <img src="@/assets/mohammad.jpg" alt="team member" class="img-fluid">
                     </div>
-                    <div class="team-hover">
-                        <div class="desk">
-                            <h4>Hi There !</h4>
-                            <p>I love to introduce myself as a hardcore Web Designer.</p>
-                        </div>
-                        <div class="s-link">
+                    <div class="team-hover desk">
+                        <!-- <div class="desk"> -->
+                            <h4>Mohammad Siavashi</h4>
+                            <p>CEO and Founder <br> Mohammad is a Computer Engineering graduate from Shiraz University. Has brought 6+ years of software engineering and security experience to the project.</p>
+                        <!-- </div> -->
+                        <!-- <div class="s-link">
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
                             <a href="#"><i class="fa fa-google-plus"></i></a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="team-title">
                     <h5>Mohammad Siavashi</h5>
-                    <span>founder & ceo</span>
+                    <span>Founder & CEO</span>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6">
+            <div class="col-md-4 col-sm-4">
                 <div class="team-member">
                     <div class="team-img">
-                        <img src="https://image.freepik.com/free-photo/elegant-man-with-thumbs-up_1149-1595.jpg" alt="team member" class="img-fluid">
+                        <img src="@/assets/ahmad.jpg" alt="team member" class="img-fluid">
                     </div>
-                    <div class="team-hover">
-                        <div class="desk">
-                            <h4>Hello World</h4>
-                            <p>I love to introduce myself as a hardcore Web Designer.</p>
-                        </div>
-                        <div class="s-link">
+                    <div class="team-hover desk">
+                        <!-- <div class="desk"> -->
+                            <h4>Ahmad Siavashi</h4>
+                            <p>CTO & Co-Founder<br>Ahmad is a Ph.D. student of Computer Engineering at Tehran Polytechnic. The project is in debt of his solid experience.</p>
+                        <!-- </div> -->
+                        <!-- <div class="s-link">
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
                             <a href="#"><i class="fa fa-google-plus"></i></a>
-                        </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="team-title">
+                    <h5>Ahmad Siavashi</h5>
+                    <span>CTO & Co-Founder</span>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="team-member">
+                    <div class="team-img">
+                        <img src="@/assets/khunjush.jpg" alt="team member" class="img-fluid">
+                    </div>
+                    <div class="team-hover desk">
+                        <!-- <div class="desk"> -->
+                            <h4>Dr. Farshad Khunjush</h4>
+                            <p>Dr. Khunjush has a PhD from University of Victoria (CA). He is already associate professor of Shiraz University. We sincerely appreciate his valuable exprience in this project. </p>
+                        <!-- </div> -->
+                        <!-- <div class="s-link">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                        </div> -->
                     </div>
                 </div>
                 <div class="team-title">
                     <h5>Dr. Farshad Khunjush</h5>
-                    <span>Project Manager</span>
+                    <span>Project Advisor</span>
 
                 </div>
             </div>
