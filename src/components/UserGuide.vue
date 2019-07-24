@@ -9,8 +9,8 @@
                             <div class="timeline-content">
                                 <h3 class="title">Create new Wallet</h3>
                                 <p class="description">
-                                    The very first step to enter ethereum blockchain world is to create your own wallet.
-                                    Click on Create circle to create your own wallet now.
+                                    The very first step to enter Ethereum blockchain world is to create your own wallet.
+                                    You can create yours at the beginning of this page.
                                 </p>
                             </div>
                         </div>
@@ -19,8 +19,8 @@
                             <div class="timeline-content">
                                 <h3 class="title">Keep Your Wallet Safe</h3>
                                 <p class="description">
-                                    Do Not Lose Your Private Key.
-                                    The private key is needed to sign the transactions for transfer function ERC20 standard.<br>
+                                    *Losing your Key means losing your deposit*<br>
+                                    The private key is needed to sign the transactions and login to your wallet.
                                 </p>
                             </div>
                         </div>
@@ -29,18 +29,18 @@
                             <div class="timeline-content">
                                 <h3 class="title">Connect To Blockchain</h3>
                                 <p class="description">
-                                    Use your dashboard to connect to your wallet.<br>
-                                    You can choose among provided methods to access your wallet.
+                                    Use your Dashboard to connect to your wallet.<br>
+                                    You can choose from multiple methods to access your wallet.
                                 </p>
                             </div>
                         </div>
                         <div class="timeline">
                             <div class="timeline-icon"><span class="step">Done !</span></div>
                             <div class="timeline-content">
-                                <h3 class="title">Send & Receive</h3>
+                                <h3 class="title">Hooray!!!</h3>
                                 <p class="description">
                                     Now that you have access to your wallet you can easily do your Transaction.
-                                    Please do not forget to choose your network from toolbar.
+                                    Please choose MainNet network from toolbar for real transactions.
                                 </p>
                             </div>
                         </div>

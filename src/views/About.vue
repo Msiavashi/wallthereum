@@ -5,8 +5,8 @@
                 <div class="col-md-9 col-sm-9 col-xs-12">
                     <div class="aboutus">
                         <h2 class="aboutus-title">About Us</h2>
-                        <p class="aboutus-text">Wallthereum is an open-source web application, free software that has been designed to be secure as your ethereum private wallet. we designed wallthereum in a way that everything happens just in your browser, no data would be send to any server but blockchain network so you can reliably unlock your wallet for transactions.</p>
-                        <p class="aboutus-text">Wallet is just the beginning. As we first started wallthereum with security in mind, we planed to develope a much complex trading ecosystem with support for web & mobile devices.</p>
+                        <p class="aboutus-text">Wallthereum is an open-source web application, free software that has been designed to be secure as your Ethereum private wallet. we designed Walltehreum in a way that everything happens just in your browser, no data would be send to any server but blockchain network so you can reliably unlock your wallet for transactions.</p>
+                        <p class="aboutus-text">Wallet is just the beginning. As we first started Wallthereum with security in mind, we planned to develop a much complex trading ecosystem with support for web & mobile devices.</p>
                         <p class="aboutus-text">Have that in mind, we appreciate any contribution to make the system grow to be a leading secure platform for cryptocurrencies. Let's Join Us.</p>
                         <a class="grow aboutus-more" href="mailto:mohammad.siav@hotmail.com"> email us</a>
                         <span class="mx-2"></span>
@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12 text-center">
                     <div class="aboutus-banner">
-                        <img src="https://www.ethereum.org/images/logos/ETHEREUM-LOGO_PORTRAIT_Black_small.png" style="min-width: 100%; min-height: 100%" class="img-fluid" alt="ethereum">
+                        <img src="@/assets/about-ethereum.png" style="min-width: 100%; min-height: 100%" class="img-fluid" alt="ethereum">
                     </div>
                 </div>
             </div>

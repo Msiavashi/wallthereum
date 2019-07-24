@@ -13,13 +13,13 @@
                         </div>
                     </div>
                 <div class="align-content-center container-fluid text-center" style="z-index:2">
-                    <button type="button" @click="onGettingStartedClicked()" class="btn-change text-white btn btn-round-lg btn-lg shadow" style="background: rgb(91,50,180)">getting started</button>
+                    <button type="button" @click="onGettingStartedClicked()" class="btn-change text-white btn btn-round-lg btn-lg shadow" style="background: rgb(91,50,180)">Getting started</button>
                     <span class="mx-1"></span>
-                    <button @click="changeRoute('dashboard')" type="button" class="btn-change text-white btn btn-round-lg btn-lg align-self-center shadow" style="background: rgb(86,158,148)">&nbsp&nbsp&nbsp&nbsp already have a wallet? &nbsp&nbsp&nbsp&nbsp</button>
+                    <button @click="changeRoute('dashboard')" type="button" class="btn-change text-white btn btn-round-lg btn-lg align-self-center shadow" style="background: rgb(86,158,148)">Already have a wallet?</button>
                 </div>
             </div>
             <div class="container d-flex justify-content-center col-sm-6 banner" style="">
-                <img src='https://cdn4.iconfinder.com/data/icons/cryptocurrency-bitcoin/512/Ethereum_Wallet-01-512.png' class="align-self-center img-fluid" style="">
+                <img src='@/assets/logo.png' class="align-self-center img-fluid" style="">
             <!-- <h1> Keep Your Coins Safe </h1> -->
             </div>
             <svg id='sine' viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-0.35,129.77 C149.99,150.00 399.04,103.13 526.60,145.55 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg>
@@ -31,7 +31,7 @@
         <!-- content start -->
         <div class="container">
             <div class="">
-                <h2 class="h2 text-center"> Join the future of Trading </h2>
+                <h2 class="h2 text-center"> Join the Future Now </h2>
                 <h5 class="p text-center font-italic font-weight-light text-body text-black-50">
                     Ethereum is an open-source, public, blockchain-based distributed computing platform and operating system featuring smart contract functionality. It supports a modified version of Nakamoto consensus via transaction-based state transitions.
                 </h5>
@@ -48,7 +48,7 @@
                                 <h5 class="headline h5 py-3"> Secure </h5>
                             </div>
                             <div class="container text-center text-wrap">
-                                <p class="h6 text-black-50"> everything happens in your browser. we store or send nothing to our servers.</p>
+                                <p class="h6 text-black-50"> Everything happens within your browser. We store or send nothing to our servers.</p>
                             </div>
                         </div>
                     </div>
@@ -61,10 +61,10 @@
                                 <div class="hexBottom"></div>
                             </div>
                             <div class="container text-center">
-                                <h5 class="headline h5 py-3"> Wallet Panel </h5>
+                                <h5 class="headline h5 py-3"> Easy Access </h5>
                             </div>
                             <div class="container text-center text-wrap">
-                                <p class="h6 text-black-50"> A user friendly Dashboard to monitor and control your deposit and transactions  </p>
+                                <p class="h6 text-black-50"> A user friendly and butterly smooth interface that enables you to create and connect to your wallet within just a few seconds from any device. </p>
                             </div>
                         </div>
 
@@ -78,10 +78,11 @@
                             </div>
 
                             <div class="container text-center">
-                                <h5 class="headline h5 pt-3"> Mobile Application </h5><p class="text-success">(Coming Soon)</p>
+                                <h5 class="headline h5 pt-3"> Mobile Application </h5><p class="text-success">Android Available</p>
                             </div>
                             <div class="container text-center text-wrap">
-                                <p class="h6 text-black-50"> You can think of Wallthereum Android as a completely secure, hermetic environment, which uses hybrid encryption on top of Android’s own keystore to provide maximum security on the inside. </p>
+                                <p class="h6 text-black-50"> You can think of Wallthereum Android as a completely secure, hermetic environment, which uses hybrid encryption to store your key files.</p>
+                                <p class="text-warning">IOS Application will be available soon</p>
                             </div>
 
                         </div>
@@ -208,17 +209,15 @@ padding-right: 10px;
 }
 
 .mobile-hexagon {
-  background-image: url(https://cdn-images-1.medium.com/max/2000/1*8jBQZ82dDbA530C8SpUUPg.png);
+  background-image: url('~@/assets/mobile.jpg');
 }
 
 .security-hexagon {
-
-  background-image: url(https://www.tcfm.co.uk/wp-content/uploads/2017/12/security-padlock-1.jpg);
+  background-image: url('~@/assets/security.jpg');
 }
 
 .dashboard-hexagon {
-
-  background-image: url(https://www.ripplecoinnews.com/wp-content/uploads/2017/09/online-wallet-cryptocurrency.png);
+  background-image: url('~@/assets/access.jpg');
 }
 
 .hexagon {
