@@ -7,7 +7,7 @@
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<h5 class="h5 font-italic font-weight-bold"> What is Wallthereum?</h5>
 					<div>
-						<h6 class="h6 font-italic"> wallthereum is secure, open-source and client-side wallet for ethereum. we are developing the platform real fast to be able to support more features based on blockchain network and provide you easier ways to interact with blockchain with highest degrees of security. out secure mobile application would be the next step and would be available soon.</h6>
+						<h6 class="h6 font-italic"> Wallthereum is a secure, open-source and client-side wallet for Ethereum. we are developing the platform really fast to be able to support more features based on the blockchain network and provide you easier ways to interact with blockchain with the highest degrees of security. The IOS application is our next stop according to our roadmap.</h6>
 					</div>
 					<ul class="list-unstyled quick-links">
 						<li><a href="https://www.ethereum.org/"><i class="fa fa-angle-double-right"></i>ethereum project</a></li>
@@ -19,17 +19,16 @@
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<h5 class="font-italic font-weight-bold">Help us Grow</h5>
 					<div>
-						<h6 class="h6 font-italic">if you are a developer the walltehreum is open source. so please consider helping the platfom grow with your contribution
+						<h6 class="h6 font-italic">If you are a developer, the Walltehreum is open source. so please consider helping the platform grow with your collaboration.
 						<br>
-						if you are not, please consider sharing the address below everywhere in internet.
+						If you are not, please consider sharing the address below everywhere on the internet. 
 						<br>
-						<br>
-						by the way... we always appreciate your donation: <br> <span class="font-weight-bold"> ETH (mainnet): </span> 0x30F0f68e47349D14a3dbeb1d7942999168d00B8f</h6>
+						<span class="text-success font-weight-bold">By the way...</span> we always appreciate your <span class="font-weight-bold">donation</span> <br> <span class="font-weight-bold"> ETH (mainnet): </span> 0x30F0f68e47349D14a3dbeb1d7942999168d00B8f</h6>
 
 					</div>
 					<ul class="list-unstyled quick-links">
-						<li><a href="javascript:void();"><i class="fa fa-envelope"></i>support email: support@wallthereum.com</a></li>
-						<li><a href="javascript:void();"><i class="fa fa-github"></i>github</a></li>
+						<li><a href="https://github.com/Msiavashi/wallthereum/issues"><i class="fa fa-envelope"></i>support: GitHub Issues</a></li>
+						<li><a href="https://github.com/Msiavashi/wallthereum"><i class="fa fa-github"></i>GitHub</a></li>
 					</ul>
 				</div>
 			</div>

@@ -26,12 +26,20 @@
         </div>
         <!-- header end -->
 
-        <div class="mt-5 pt-5">&nbsp;</div>
+        <!-- <div class="mt-5 pt-5">&nbsp;</div> -->
 
         <!-- content start -->
         <div class="container">
-            <div class="">
+
+            <div>
                 <h2 class="h2 text-center"> Join the Future Now </h2>
+                
+                <div class="text-center m-5">
+                    <app-store-button></app-store-button>
+                    <span class="m-3"></span>
+                    <play-store-button></play-store-button>
+                </div>
+
                 <h5 class="p text-center font-italic font-weight-light text-body text-black-50">
                     Ethereum is an open-source, public, blockchain-based distributed computing platform and operating system featuring smart contract functionality. It supports a modified version of Nakamoto consensus via transaction-based state transitions.
                 </h5>
@@ -294,7 +302,8 @@ import TutorialModal from '@/components/TutorialModal';
 import UserGuide from '@/components/UserGuide';
 import TeamMembers from '@/components/TeamMembers';
 import {mapState} from 'vuex';
-
+import PlayStoreButton from '@/components/PlayStoreButton';
+import AppStoreButton from '@/components/AppStoreButton';
 export default {
     computed: {
         password: {
@@ -311,7 +320,9 @@ export default {
     components: {
         TutorialModal,
         UserGuide,
-        TeamMembers
+        TeamMembers,
+        PlayStoreButton,
+        AppStoreButton
     },
 
     methods: {
