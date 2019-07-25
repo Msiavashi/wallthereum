@@ -2,11 +2,14 @@
   "name": "wallthereum",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "10.6.0"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "start": "node server.js"
+    "start": 
   },
   "dependencies": {
     "axios": "^0.18.0",
