@@ -201,7 +201,7 @@ padding-right: 10px;
     position: relative;
     width: 100%;
     height: 100vh;
-    background-image:  url("http://majesticengineering.com.my/wp-content/uploads/2016/01/background-1.jpg");
+    /* background-image:  url("http://majesticengineering.com.my/wp-content/uploads/2016/01/background-1.jpg"); */
     background: #2A93D5;
 
 }
