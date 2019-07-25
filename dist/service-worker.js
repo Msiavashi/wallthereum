@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.6f348bde705a6bf526bd40454ef4a03a.js"
+  "/wallthereum/precache-manifest.a56bac6b33d7f7c14e47f4ca15215b18.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "wallthereum"});
