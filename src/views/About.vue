@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12 text-center">
                     <div class="aboutus-banner">
-                        <img src="@/assets/about-ethereum.png" style="min-width: 100%; min-height: 100%" class="img-fluid" alt="ethereum">
+                        <img src="@/assets/about-ethereum.png" style="min-width: 100%; min-height: 100%" class="img-fluid mt-5" alt="ethereum">
                     </div>
                 </div>
             </div>

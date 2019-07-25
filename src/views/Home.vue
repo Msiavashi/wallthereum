@@ -32,7 +32,7 @@
         <div class="container">
 
             <div>
-                <h2 class="h2 text-center"> Join the Future Now </h2>
+                <h2 class="h2 text-center mt-5"> Join the Future Now </h2>
                 
                 <div class="text-center m-5">
                     <app-store-button></app-store-button>

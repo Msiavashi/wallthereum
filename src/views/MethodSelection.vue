@@ -79,7 +79,7 @@
                                         MetaMask includes a secure identity vault, providing a user interface to manage your identities on different sites and sign blockchain transactions.
                                     </p>
                                     <br>
-                                    <h5 class="alert h5 text-danger"><b> We will support MetaMask real soon ... </b></h5>
+                                    <h5 class="alert h5 text-danger"><b> We will support MetaMask soon ... </b></h5>
                                 </div>
                             </div>
                         </div></div>
@@ -103,11 +103,11 @@ export default {
 
         // initializing and appending the MetaMask Logo to its Div
         let metaMaskViewer = ModelViewer({
-            pxNotRatio: true,
-            // width: 50,
-            // height: 400,
-            follwoMouse: true,
-            followMotion: true,
+            pxNotRatio: false,
+            // width: 0.5,
+            // height: 0.5,
+            follwoMouse: false,
+            followMotion: false,
             // slowDrift: false
         });
         // console.log(this.$refs.metamask);
