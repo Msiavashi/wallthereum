@@ -106,7 +106,7 @@ export default {
             pxNotRatio: false,
             // width: 0.5,
             // height: 0.5,
-            follwoMouse: false,
+            followMouse: true,
             followMotion: false,
             // slowDrift: false
         });
@@ -120,7 +120,7 @@ export default {
         // metaMaskViewer.setFollowMouse(true)
 
         // deallocate nicely
-        // metaMaskViewer.stopAnimation()
+        metaMaskViewer.stopAnimation()
     },
 
     methods: {
